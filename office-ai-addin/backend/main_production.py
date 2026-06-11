@@ -27,9 +27,9 @@ app = FastAPI(title="Office AI Add-in Backend", version="2.0.0")
 
 # !! REPLACE THESE WITH YOUR ACTUAL API KEYS !!
 API_KEYS = {
-    "openai": "sk-your-openai-key-here",
-    "anthropic": "your-anthropic-key-here",
-    "gemini": "your-gemini-key-here",
+    "openai": "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",
+    "anthropic": "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",
+    "gemini": "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",
 }
 
 # !! REPLACE WITH A SECRET KEY FOR USER AUTH !!
@@ -211,7 +211,7 @@ def check_rate_limit(user_id: str) -> tuple[bool, dict]:
 
 async def call_anthropic(prompt: str, system_prompt: str, model: str, max_tokens: int) -> tuple[str, int]:
     """Call Anthropic Claude API. Returns (response, tokens_used)."""
-    model = model or "claude-haiku-4-5-20251001"
+    model = model or "nvidia/nemotron-3-ultra-550b-a55b"
     payload = {
         "model": model,
         "max_tokens": max_tokens,
@@ -222,7 +222,7 @@ async def call_anthropic(prompt: str, system_prompt: str, model: str, max_tokens
 
     async with httpx.AsyncClient(timeout=60.0) as client:
         response = await client.post(
-            "https://api.anthropic.com/v1/messages",
+            "https://integrate.api.nvidia.com/v1",
             headers={
                 "x-api-key": API_KEYS["anthropic"],
                 "anthropic-version": "2023-06-01",
@@ -245,7 +245,7 @@ async def call_anthropic(prompt: str, system_prompt: str, model: str, max_tokens
 
 async def call_openai(prompt: str, system_prompt: str, model: str, max_tokens: int) -> tuple[str, int]:
     """Call OpenAI API. Returns (response, tokens_used)."""
-    model = model or "gpt-4o-mini"
+    model = model or "nvidia/nemotron-3-ultra-550b-a55b"
     messages = []
     if system_prompt:
         messages.append({"role": "system", "content": system_prompt})
@@ -253,7 +253,7 @@ async def call_openai(prompt: str, system_prompt: str, model: str, max_tokens: i
 
     async with httpx.AsyncClient(timeout=60.0) as client:
         response = await client.post(
-            "https://api.openai.com/v1/chat/completions",
+            "https://integrate.api.nvidia.com/v1",
             headers={
                 "Authorization": f"Bearer {API_KEYS['openai']}",
                 "Content-Type": "application/json"
@@ -272,12 +272,12 @@ async def call_openai(prompt: str, system_prompt: str, model: str, max_tokens: i
 
 async def call_gemini(prompt: str, system_prompt: str, model: str, max_tokens: int) -> tuple[str, int]:
     """Call Google Gemini API. Returns (response, tokens_used)."""
-    model = model or "gemini-1.5-flash"
+    model = model or "nvidia/nemotron-3-ultra-550b-a55b"
     full_prompt = f"{system_prompt}\n\n{prompt}" if system_prompt else prompt
 
     async with httpx.AsyncClient(timeout=60.0) as client:
         response = await client.post(
-            f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={API_KEYS['gemini']}",
+            f"https://integrate.api.nvidia.com/v1",
             json={
                 "contents": [{"parts": [{"text": full_prompt}]}],
                 "generationConfig": {"maxOutputTokens": max_tokens},

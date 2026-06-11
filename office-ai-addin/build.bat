@@ -38,7 +38,7 @@ echo.
 echo [3/4] Build complete!
 echo.
 echo SUCCESS: Your .exe is ready at:
-echo   dist\OfficeAI\OfficeAI.exe
+echo   dist\Exelidoc\Exelidoc.exe
 echo.
 
 REM Check if user wants to create installer
@@ -59,7 +59,7 @@ if /i "%CREATE_INSTALLER%"=="y" (
     )
     
     echo.
-    echo SUCCESS: Installer created: OfficeAI-Installer.exe
+    echo SUCCESS: Installer created: Exelidoc-Installer.exe
 ) else (
     echo.
     echo You can create installer later by running:
@@ -69,8 +69,8 @@ if /i "%CREATE_INSTALLER%"=="y" (
 
 echo.
 echo Next steps:
-echo   1. Test: run dist\OfficeAI\OfficeAI.exe
-echo   2. Zip folder: dist\OfficeAI or use OfficeAI-Installer.exe
+echo   1. Test: run dist\Exelidoc\Exelidoc.exe
+echo   2. Zip folder: dist\Exelidoc or use Exelidoc-Installer.exe
 echo   3. Upload to your website
 echo.
 echo Documentation: See BUILD_EXE.md for detailed instructions

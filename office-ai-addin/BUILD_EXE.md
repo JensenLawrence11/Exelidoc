@@ -1,6 +1,6 @@
 # Building Office AI Add-in as a Single .EXE
 
-This guide shows how to package everything into `OfficeAI.exe` that users can download and run.
+This guide shows how to package everything into `Exelidoc.exe` that users can download and run.
 
 ---
 
@@ -52,7 +52,7 @@ pyinstaller office-ai-addin.spec
 ```
 
 This creates:
-- `dist/OfficeAI/OfficeAI.exe` — the main app
+- `dist/Exelidoc/Exelidoc.exe` — the main app
 - Plus all dependencies bundled
 
 **Build time**: 2-5 minutes
@@ -61,8 +61,8 @@ This creates:
 
 ```
 dist/
-└── OfficeAI/
-    ├── OfficeAI.exe          ← Run this
+└── Exelidoc/
+    ├── Exelidoc.exe          ← Run this
     ├── backend/              ← All backend files
     ├── addin/                ← All Office add-in files
     └── [dependencies]        ← All Python libraries
@@ -84,7 +84,7 @@ Download from: https://nsis.sourceforge.io/Download
 makensis office-ai-addin.nsi
 ```
 
-This creates: `OfficeAI-Installer.exe`
+This creates: `Exelidoc-Installer.exe`
 
 Users run this → it installs to `C:\Program Files\Office AI` → shortcuts on desktop
 
@@ -93,16 +93,16 @@ Users run this → it installs to `C:\Program Files\Office AI` → shortcuts on 
 ## 🚀 Step 4: Distribute
 
 ### Option A: Folder Distribution
-Zip the `dist/OfficeAI/` folder:
+Zip the `dist/Exelidoc/` folder:
 ```bash
 cd dist
-powershell -Command "Compress-Archive -Path OfficeAI -DestinationPath OfficeAI.zip"
+powershell -Command "Compress-Archive -Path Exelidoc -DestinationPath Exelidoc.zip"
 ```
 
-Users download `OfficeAI.zip`, extract, run `OfficeAI.exe`
+Users download `Exelidoc.zip`, extract, run `Exelidoc.exe`
 
 ### Option B: Installer
-Upload `OfficeAI-Installer.exe` to your website
+Upload `Exelidoc-Installer.exe` to your website
 Users download and install with one click
 
 ### Option C: Auto-Update (Advanced)
@@ -139,7 +139,7 @@ Use Electron Updater or similar to push updates automatically
 
 ## 🔧 First Run Experience for Users
 
-1. **Download `OfficeAI.exe`**
+1. **Download `Exelidoc.exe`**
 2. **Run it** → Desktop launcher opens
 3. **Go to Settings tab** → Enter their Anthropic API key (they provide their own, or you provide)
 4. **Click Start Server**
@@ -185,8 +185,8 @@ Expected sizes:
 
 | Item | Size |
 |------|------|
-| OfficeAI.exe | ~150 MB |
-| OfficeAI-Installer.exe | ~80 MB |
+| Exelidoc.exe | ~150 MB |
+| Exelidoc-Installer.exe | ~80 MB |
 | All dependencies | Included in above |
 
 Large because PyQt5 + all Python standard library are bundled.
@@ -230,8 +230,8 @@ pip install pyinstaller==6.10.0
 
 1. ✅ **Add your API keys** to `main_production.py`
 2. ✅ **Run `pyinstaller office-ai-addin.spec`**
-3. ✅ **Test `dist/OfficeAI/OfficeAI.exe`** on your machine
-4. ✅ **Zip the `dist/OfficeAI` folder** or **build installer with NSIS**
+3. ✅ **Test `dist/Exelidoc/Exelidoc.exe`** on your machine
+4. ✅ **Zip the `dist/Exelidoc` folder** or **build installer with NSIS**
 5. ✅ **Upload to your website** for download
 
 ---
@@ -264,7 +264,7 @@ This way, **you don't store API keys in code**, and **users provide their own** 
 ## 💡 Distribution Strategies
 
 ### Free Download (SaaS Model)
-- User downloads `OfficeAI.exe`
+- User downloads `Exelidoc.exe`
 - Runs locally
 - Signs up with email
 - You charge based on token usage (your API account)
@@ -281,7 +281,7 @@ This way, **you don't store API keys in code**, and **users provide their own** 
 
 ## 🎉 You're Ready!
 
-Once `dist/OfficeAI/OfficeAI.exe` exists, you have:
+Once `dist/Exelidoc/Exelidoc.exe` exists, you have:
 
 ✅ One file to distribute
 ✅ Everything bundled (backend, frontend, launcher)

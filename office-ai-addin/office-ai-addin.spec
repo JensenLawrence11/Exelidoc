@@ -2,7 +2,7 @@
 """
 PyInstaller spec for Office AI Add-in
 Run: pyinstaller office-ai-addin.spec
-This creates: dist/OfficeAI.exe (single file with everything bundled)
+This creates: dist/Exelidoc.exe (single file with everything bundled)
 """
 
 import sys
@@ -41,7 +41,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='OfficeAI',
+    name='Exelidoc',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -65,5 +65,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='OfficeAI'
+    name='Exelidoc'
 )

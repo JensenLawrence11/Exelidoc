@@ -37,7 +37,7 @@ office-ai-addin/
 
 ### Download & Run
 
-1. **Download** `OfficeAI.exe` from your website
+1. **Download** `Exelidoc.exe` from your website
 2. **Run** it → Desktop launcher opens
 3. **Configure** API keys in Settings tab
 4. **Start Server** → backend runs on localhost:8000
@@ -85,11 +85,11 @@ build.bat
 pyinstaller office-ai-addin.spec
 ```
 
-This creates: `dist/OfficeAI/OfficeAI.exe` (~150 MB with all dependencies)
+This creates: `dist/Exelidoc/Exelidoc.exe` (~150 MB with all dependencies)
 
 ### Step 4: Test
 
-Run `dist/OfficeAI/OfficeAI.exe` on your machine. Should:
+Run `dist/Exelidoc/Exelidoc.exe` on your machine. Should:
 - ✅ Show the launcher window
 - ✅ Allow you to start the server
 - ✅ Backend runs on http://localhost:8000
@@ -99,14 +99,14 @@ Run `dist/OfficeAI/OfficeAI.exe` on your machine. Should:
 
 **Option A: Folder Distribution**
 ```bash
-# Zip the dist/OfficeAI folder and upload to your website
-powershell -Command "Compress-Archive -Path dist/OfficeAI -DestinationPath OfficeAI.zip"
+# Zip the dist/Exelidoc folder and upload to your website
+powershell -Command "Compress-Archive -Path dist/Exelidoc -DestinationPath Exelidoc.zip"
 ```
 
 **Option B: Installer (NSIS)**
 ```bash
 makensis office-ai-addin.nsi
-# Creates: OfficeAI-Installer.exe
+# Creates: Exelidoc-Installer.exe
 ```
 
 Upload to website, users click "Install"
@@ -143,7 +143,7 @@ Upload to website, users click "Install"
 
 ### User Flow
 
-1. User downloads `OfficeAI.exe`
+1. User downloads `Exelidoc.exe`
 2. Runs it → launcher opens
 3. Clicks "Start Server"
 4. In Office, signs in with email (Account tab)
@@ -268,7 +268,7 @@ Edit `backend/main_production.py` to default to OpenAI instead of Anthropic.
 
 1. ✅ Update API keys in `backend/main_production.py`
 2. ✅ Run `build.bat` to create the .exe
-3. ✅ Test `dist/OfficeAI/OfficeAI.exe` on your machine
+3. ✅ Test `dist/Exelidoc/Exelidoc.exe` on your machine
 4. ✅ Zip it or create installer
 5. ✅ Upload to your website
 6. ✅ **Start charging for subscriptions!**

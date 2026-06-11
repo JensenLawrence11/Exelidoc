@@ -7,7 +7,7 @@
 ; ─── Settings ──────────────────────────────────────────────────────────────────
 
 Name "Office AI Add-in"
-OutFile "OfficeAI-Installer.exe"
+OutFile "Exelidoc-Installer.exe"
 InstallDir "$PROGRAMFILES\Office AI"
 RequestExecutionLevel admin
 
@@ -26,14 +26,14 @@ Section "Install"
     SetOutPath "$INSTDIR"
     
     ; Copy executable and files
-    File /r "dist\OfficeAI\*.*"
+    File /r "dist\Exelidoc\*.*"
     
     ; Create shortcuts
     CreateDirectory "$SMPROGRAMS\Office AI"
     CreateShortcut "$SMPROGRAMS\Office AI\Office AI Control Panel.lnk" \
-        "$INSTDIR\OfficeAI.exe" "" "$INSTDIR\OfficeAI.exe" 0
+        "$INSTDIR\Exelidoc.exe" "" "$INSTDIR\Exelidoc.exe" 0
     CreateShortcut "$DESKTOP\Office AI Control Panel.lnk" \
-        "$INSTDIR\OfficeAI.exe" "" "$INSTDIR\OfficeAI.exe" 0
+        "$INSTDIR\Exelidoc.exe" "" "$INSTDIR\Exelidoc.exe" 0
     
     ; Register manifest with Office (optional, advanced)
     ; This would require VBScript to add to trusted locations

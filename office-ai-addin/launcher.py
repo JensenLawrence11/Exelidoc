@@ -76,7 +76,7 @@ class ServerThread(QThread):
 
 # ─── Main Application ─────────────────────────────────────────────────────────
 
-class OfficeAILauncher(QMainWindow):
+class ExelidocLauncher(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Office AI Add-in — Control Panel")
@@ -495,6 +495,6 @@ For more info: Check the documentation files included
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    launcher = OfficeAILauncher()
+    launcher = ExelidocLauncher()
     launcher.show()
     sys.exit(app.exec_())

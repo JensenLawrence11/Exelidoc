@@ -44,7 +44,7 @@ All pages are:
 
 **Buy a domain:**
 - Go to Namecheap, GoDaddy, or Google Domains
-- Buy your domain (e.g., `officeai.com`)
+- Buy your domain (e.g., `Exelidoc.com`)
 - Point it to Netlify (Netlify will give you DNS settings)
 
 ---
@@ -56,12 +56,12 @@ In `download.html`, find this line (around line 350):
 
 ```html
 // In production, you would use:
-// window.location.href = 'https://your-domain.com/downloads/OfficeAI.exe';
+// window.location.href = 'https://your-domain.com/downloads/Exelidoc.exe';
 ```
 
 Replace with your actual download URL:
 ```html
-window.location.href = 'https://your-domain.com/downloads/OfficeAI.exe';
+window.location.href = 'https://your-domain.com/downloads/Exelidoc.exe';
 ```
 
 Or use a service like:
@@ -364,7 +364,7 @@ That's it! Your Exelidoc product is now live online. 🎉
 
 ## 📞 Next Steps
 
-1. **Get the .exe ready** — Build your OfficeAI.exe with the backend + launcher
+1. **Get the .exe ready** — Build your Exelidoc.exe with the backend + launcher
 2. **Host the .exe** — Upload to GitHub Releases, AWS S3, or Netlify
 3. **Update download link** — Point the website to your .exe
 4. **Launch** — Share the website link everywhere

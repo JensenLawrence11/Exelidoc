@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Office AI — Local & Cloud AI Explained</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    
+    nav {
+      background: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: #6c8ef5;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #6c8ef5, #a78bfa);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 14px;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color .3s;
+    }
+    
+    .nav-links a:hover {
+      color: #6c8ef5;
+    }
+    
+    .nav-cta {
+      background: #6c8ef5;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #f5f7fa 0%, #e8eef7 100%);
+      padding: 80px 20px;
+      text-align: center;
+    }
+    
+    .header-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      font-size: 48px;
+      color: #1a1a1a;
+      margin-bottom: 16px;
+    }
+    
+    .subtitle {
+      font-size: 18px;
+      color: #666;
+    }
+    
+    .content {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    
+    .section {
+      margin-bottom: 80px;
+    }
+    
+    h2 {
+      font-size: 32px;
+      color: #1a1a1a;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #e0e0e0;
+    }
+    
+    h3 {
+      font-size: 24px;
+      color: #1a1a1a;
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+    
+    p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 16px;
+    }
+    
+    .feature-list {
+      background: #f9fafb;
+      padding: 30px;
+      border-radius: 12px;
+      margin: 24px 0;
+      border-left: 4px solid #6c8ef5;
+    }
+    
+    .feature-list li {
+      list-style: none;
+      padding: 10px 0;
+      color: #555;
+    }
+    
+    .feature-list li:before {
+      content: "✓ ";
+      color: #6c8ef5;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+    
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 32px 0;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    
+    .comparison-table th {
+      background: #6c8ef5;
+      color: #fff;
+      padding: 16px;
+      text-align: left;
+      font-weight: 600;
+    }
+    
+    .comparison-table td {
+      padding: 16px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .comparison-table tr:nth-child(even) {
+      background: #f9fafb;
+    }
+    
+    .check { color: #4caf88; font-weight: bold; }
+    .cross { color: #e8564a; font-weight: bold; }
+    
+    .code-block {
+      background: #1a1a1a;
+      color: #e0e0e0;
+      padding: 20px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+    
+    .use-case {
+      background: #e8eef7;
+      padding: 24px;
+      border-radius: 12px;
+      margin: 24px 0;
+      border-left: 4px solid #6c8ef5;
+    }
+    
+    .use-case h4 {
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+    
+    .use-case p {
+      font-size: 15px;
+      color: #555;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: #6c8ef5;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background .3s;
+      margin-top: 20px;
+    }
+    
+    .btn:hover {
+      background: #5a7bd0;
+    }
+    
+    footer {
+      background: #1a1a1a;
+      color: #e0e0e0;
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 80px;
+    }
+    
+    .footer-links a {
+      color: #6c8ef5;
+      text-decoration: none;
+      margin: 0 16px;
+    }
+    
+    @media (max-width: 768px) {
+      h1 { font-size: 32px; }
+      h2 { font-size: 24px; }
+      .comparison-table { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-container">
+    <div class="logo">
+      <div class="logo-icon">✦</div>
+      Office AI
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="getting-started.html">Getting Started</a></li>
+      <li><a href="download.html" class="nav-cta">Download</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Header -->
+<section class="header">
+  <div class="header-container">
+    <h1>Why Office AI Is Different</h1>
+    <p class="subtitle">The freedom to choose: local privacy or cloud power</p>
+  </div>
+</section>
+
+<!-- Content -->
+<div class="content">
+  
+  <!-- Local AI Section -->
+  <section class="section">
+    <h2>🖥️ Local AI — Your Computer, Your Data</h2>
+    
+    <p>With Local AI powered by Ollama, everything runs on your computer. Your documents never leave your machine.</p>
+    
+    <h3>Perfect For:</h3>
+    <ul class="feature-list">
+      <li>Confidential documents (contracts, medical records, legal)</li>
+      <li>Privacy-conscious professionals</li>
+      <li>Companies with data compliance requirements</li>
+      <li>Users without reliable internet</li>
+      <li>Zero API costs</li>
+    </ul>
+    
+    <h3>How It Works</h3>
+    <p>You download Ollama (open-source AI framework), run a model on your machine, and Office AI connects to it. Everything stays local. No cloud. No third parties. No data leaving your computer.</p>
+    
+    <h3>Getting Started with Local AI</h3>
+    <ol style="margin-left: 20px; color: #555;">
+      <li style="margin: 8px 0;">Download Ollama from <strong>ollama.com</strong></li>
+      <li style="margin: 8px 0;">Run: <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">ollama pull llama3</code></li>
+      <li style="margin: 8px 0;">Run: <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">ollama serve</code></li>
+      <li style="margin: 8px 0;">In Office AI, switch to "Local AI" mode</li>
+      <li style="margin: 8px 0;">Start using — no API costs, no internet needed</li>
+    </ol>
+    
+    <div class="use-case">
+      <h4>💼 Example Use Case</h4>
+      <p>A lawyer reviewing confidential client documents. Uses Local AI so the document text never leaves their computer. Complete privacy, no API costs.</p>
+    </div>
+  </section>
+  
+  <!-- Cloud AI Section -->
+  <section class="section">
+    <h2>☁️ Cloud AI — Maximum Power & Speed</h2>
+    
+    <p>Connect to state-of-the-art AI models from OpenAI (GPT), Anthropic (Claude), or Google (Gemini). Get the best possible responses in seconds.</p>
+    
+    <h3>Perfect For:</h3>
+    <ul class="feature-list">
+      <li>Fastest, most powerful responses</li>
+      <li>Latest AI models (GPT-4, Claude, Gemini)</li>
+      <li>Professional writers & researchers</li>
+      <li>Content creators</li>
+      <li>Pay-as-you-go (very affordable)</li>
+    </ul>
+    
+    <h3>How It Works</h3>
+    <p>You provide your API key (OpenAI, Anthropic, or Gemini). Office AI sends requests to their servers and gets back the best AI responses available. You pay only for the tokens you use.</p>
+    
+    <h3>Typical Cloud AI Costs</h3>
+    <ul class="feature-list">
+      <li><strong>GPT-4:</strong> ~$0.03 per 1,000 tokens</li>
+      <li><strong>Claude 3:</strong> ~$0.003 per 1,000 tokens (very cheap)</li>
+      <li><strong>Gemini:</strong> ~$0.0005 per 1,000 tokens (cheapest)</li>
+    </ul>
+    
+    <p style="color: #6c8ef5; font-weight: 600; margin-top: 20px;">Translation: You can get 1 million tokens for $0.50–$30, depending on the model.</p>
+    
+    <div class="use-case">
+      <h4>📝 Example Use Case</h4>
+      <p>A content creator writing blog articles. Uses Cloud AI with Claude for high-quality writing. Costs ~$5/month. Gets published-ready content in seconds.</p>
+    </div>
+  </section>
+  
+  <!-- Comparison Section -->
+  <section class="section">
+    <h2>Local vs Cloud: Side-by-Side</h2>
+    
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Local AI 🖥️</th>
+          <th>Cloud AI ☁️</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Privacy</strong></td>
+          <td><span class="check">✓ Excellent</span></td>
+          <td>Good (depends on provider)</td>
+        </tr>
+        <tr>
+          <td><strong>Cost</strong></td>
+          <td><span class="check">✓ Free</span></td>
+          <td>Pay per token (~$0.001-$0.03)</td>
+        </tr>
+        <tr>
+          <td><strong>Speed</strong></td>
+          <td>Slower (depends on your PC)</td>
+          <td><span class="check">✓ Very Fast</span></td>
+        </tr>
+        <tr>
+          <td><strong>Quality</strong></td>
+          <td>Good (local models)</td>
+          <td><span class="check">✓ Excellent (GPT-4, Claude)</span></td>
+        </tr>
+        <tr>
+          <td><strong>Internet Required</strong></td>
+          <td><span class="check">✓ No</span></td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td><strong>Data Stays Local</strong></td>
+          <td><span class="check">✓ Yes</span></td>
+          <td>No (sent to provider)</td>
+        </tr>
+        <tr>
+          <td><strong>Best For</strong></td>
+          <td>Privacy, compliance, sensitive docs</td>
+          <td><span class="check">✓ Best quality, speed, power</span></td>
+        </tr>
+        <tr>
+          <td><strong>Setup Difficulty</strong></td>
+          <td>Easy (just download Ollama)</td>
+          <td><span class="check">✓ Very easy (just paste API key)</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  
+  <!-- Which Should You Use -->
+  <section class="section">
+    <h2>Which One Should You Choose?</h2>
+    
+    <div class="use-case">
+      <h4>✅ Choose Local AI If:</h4>
+      <p>• You're working with confidential documents<br>
+         • Privacy is your top priority<br>
+         • You don't want to pay per request<br>
+         • You're okay with slightly slower responses<br>
+         • You have a decent computer</p>
+    </div>
+    
+    <div class="use-case">
+      <h4>✅ Choose Cloud AI If:</h4>
+      <p>• You want the best possible AI responses<br>
+         • Speed matters to you<br>
+         • You want GPT-4 or Claude quality<br>
+         • You're fine with minimal API costs ($5-20/month)<br>
+         • You don't want to install extra software</p>
+    </div>
+    
+    <p style="margin-top: 32px; font-size: 18px; font-weight: 600; color: #6c8ef5;">
+      <strong>🎯 Best Part:</strong> You can switch between them anytime. Use local for sensitive docs, cloud for everything else.
+    </p>
+  </section>
+  
+  <!-- Real Examples -->
+  <section class="section">
+    <h2>Real-World Examples</h2>
+    
+    <h3>Lawyer - Local AI</h3>
+    <p style="background: #f9fafb; padding: 20px; border-radius: 8px; border-left: 4px solid #6c8ef5;">
+      Sarah is a lawyer reviewing confidential client contracts. She uses Office AI with Local AI (Ollama). Her document text never leaves her computer. She pays $0. Perfect.
+    </p>
+    
+    <h3>Writer - Cloud AI</h3>
+    <p style="background: #f9fafb; padding: 20px; border-radius: 8px; border-left: 4px solid #6c8ef5;">
+      Marcus is a blogger writing 20 articles per month. He uses Cloud AI with Claude. Each article costs ~$0.10 in API tokens. He gets published-ready content in minutes. Total cost: ~$2/month.
+    </p>
+    
+    <h3>Researcher - Mixed</h3>
+    <p style="background: #f9fafb; padding: 20px; border-radius: 8px; border-left: 4px solid #6c8ef5;">
+      Dr. Chen does medical research. For patient data, she uses Local AI. For literature analysis, she uses Cloud AI. She gets privacy for sensitive data and power for complex analysis.
+    </p>
+  </section>
+  
+  <!-- FAQ -->
+  <section class="section">
+    <h2>Frequently Asked Questions</h2>
+    
+    <h3>What's Ollama?</h3>
+    <p>Ollama is a free, open-source framework for running AI models locally. It handles all the technical complexity. You just download it and click a button.</p>
+    
+    <h3>Do I need to be tech-savvy to use Local AI?</h3>
+    <p>No. Just download Ollama and run it. Office AI handles the rest. It's as easy as downloading Chrome.</p>
+    
+    <h3>Is Cloud AI expensive?</h3>
+    <p>No. Claude costs about $0.003 per 1,000 tokens. You can write 100,000 words for $0.30. Most users spend $5-20/month.</p>
+    
+    <h3>Can I switch between Local and Cloud?</h3>
+    <p>Yes! One-click toggle in Office AI. Use local for sensitive docs, cloud for everything else.</p>
+    
+    <h3>Which AI model is best?</h3>
+    <p><strong>For quality:</strong> Claude 3 Opus or GPT-4<br>
+       <strong>For speed:</strong> Claude 3 Haiku or GPT-4 Turbo<br>
+       <strong>For cost:</strong> Gemini or Claude 3 Haiku</p>
+  </section>
+  
+  <!-- CTA -->
+  <section style="text-align: center; margin: 60px 0;">
+    <h2>Ready to Experience Both?</h2>
+    <p style="font-size: 18px;">Download Office AI and try both Local and Cloud AI.</p>
+    <a href="download.html" class="btn">Download Now</a>
+  </section>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#features">Features</a>
+    <a href="getting-started.html">Getting Started</a>
+    <a href="download.html">Download</a>
+  </div>
+  <p>&copy; 2024 Office AI. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

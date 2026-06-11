@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting Started with Office AI</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    
+    nav {
+      background: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: #6c8ef5;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #6c8ef5, #a78bfa);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 14px;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color .3s;
+    }
+    
+    .nav-links a:hover {
+      color: #6c8ef5;
+    }
+    
+    .nav-cta {
+      background: #6c8ef5;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #f5f7fa 0%, #e8eef7 100%);
+      padding: 80px 20px;
+      text-align: center;
+    }
+    
+    .header-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      font-size: 48px;
+      color: #1a1a1a;
+      margin-bottom: 16px;
+    }
+    
+    .subtitle {
+      font-size: 18px;
+      color: #666;
+    }
+    
+    .content {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    
+    h2 {
+      font-size: 32px;
+      color: #1a1a1a;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #e0e0e0;
+    }
+    
+    h3 {
+      font-size: 20px;
+      color: #1a1a1a;
+      margin-top: 28px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 16px;
+    }
+    
+    .step-container {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 32px;
+      margin: 24px 0;
+      border-left: 4px solid #6c8ef5;
+    }
+    
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: #6c8ef5;
+      color: #fff;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 18px;
+      margin-right: 12px;
+    }
+    
+    .code-block {
+      background: #1a1a1a;
+      color: #e0e0e0;
+      padding: 16px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      overflow-x: auto;
+      margin: 16px 0;
+      line-height: 1.4;
+    }
+    
+    .screenshot {
+      background: #f0f0f0;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      text-align: center;
+    }
+    
+    .screenshot p {
+      color: #888;
+      font-size: 14px;
+    }
+    
+    .note {
+      background: #e8eef7;
+      border-left: 4px solid #6c8ef5;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+      color: #555;
+    }
+    
+    .warning {
+      background: #fff3e0;
+      border-left: 4px solid #ff9800;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+      color: #555;
+    }
+    
+    .success {
+      background: #e8f5e9;
+      border-left: 4px solid #4caf88;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+      color: #555;
+    }
+    
+    .tabs {
+      display: flex;
+      gap: 0;
+      margin: 32px 0;
+      border-bottom: 2px solid #e0e0e0;
+    }
+    
+    .tab-btn {
+      padding: 16px 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      color: #666;
+      border-bottom: 2px solid transparent;
+      transition: all .3s;
+    }
+    
+    .tab-btn.active {
+      color: #6c8ef5;
+      border-bottom-color: #6c8ef5;
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .checklist {
+      background: #f9fafb;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    
+    .checklist li {
+      list-style: none;
+      padding: 8px 0;
+      color: #555;
+    }
+    
+    .checklist li:before {
+      content: "☐ ";
+      color: #6c8ef5;
+      margin-right: 8px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: #6c8ef5;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background .3s;
+      margin-top: 20px;
+    }
+    
+    .btn:hover {
+      background: #5a7bd0;
+    }
+    
+    footer {
+      background: #1a1a1a;
+      color: #e0e0e0;
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 80px;
+    }
+    
+    .footer-links a {
+      color: #6c8ef5;
+      text-decoration: none;
+      margin: 0 16px;
+    }
+    
+    @media (max-width: 768px) {
+      h1 { font-size: 32px; }
+      h2 { font-size: 24px; }
+      .tabs { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-container">
+    <div class="logo">
+      <div class="logo-icon">✦</div>
+      Office AI
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="features.html">Why Office AI</a></li>
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="download.html" class="nav-cta">Download</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Header -->
+<section class="header">
+  <div class="header-container">
+    <h1>Getting Started in 5 Minutes</h1>
+    <p class="subtitle">Download, install, and start using Office AI</p>
+  </div>
+</section>
+
+<!-- Content -->
+<div class="content">
+  
+  <!-- Overview -->
+  <section>
+    <h2>What You'll Learn</h2>
+    <p>This guide walks you through:</p>
+    <ul class="checklist">
+      <li>Downloading Office AI</li>
+      <li>Running the launcher app</li>
+      <li>Loading the add-in into Word/Excel/PowerPoint</li>
+      <li>Choosing Cloud or Local AI</li>
+      <li>Making your first request</li>
+    </ul>
+  </section>
+  
+  <!-- Step 1 -->
+  <section class="step-container">
+    <h3><span class="step-number">1</span>Download Office AI</h3>
+    <p>Go to <a href="download.html" style="color: #6c8ef5; text-decoration: none; font-weight: 600;">the download page</a> and click "Download Now"</p>
+    <p style="color: #888; font-size: 14px;">The file is about 150 MB. It includes everything you need.</p>
+    
+    <div class="note">
+      <strong>💡 Tip:</strong> Save it somewhere you'll remember (Desktop or Documents folder is fine)
+    </div>
+  </section>
+  
+  <!-- Step 2 -->
+  <section class="step-container">
+    <h3><span class="step-number">2</span>Run the Installer</h3>
+    <p>After downloading, double-click the installer (or exe file)</p>
+    
+    <div class="screenshot">
+      [Installer window appears]<br>
+      <p>Click "Install" → Office AI gets installed to your computer</p>
+    </div>
+    
+    <p style="margin-top: 20px;">On Windows, you might see a security warning. Click "Run" to proceed.</p>
+    
+    <div class="success">
+      <strong>✓ Done!</strong> A desktop icon appears. Click it anytime to launch Office AI.
+    </div>
+  </section>
+  
+  <!-- Step 3 -->
+  <section class="step-container">
+    <h3><span class="step-number">3</span>Launch Office AI & Configure</h3>
+    <p>Double-click the Office AI icon on your desktop</p>
+    
+    <div class="screenshot">
+      The launcher window opens<br>
+      <p>You see: Settings tab, Server tab, Help tab</p>
+    </div>
+    
+    <h4 style="margin-top: 20px; font-size: 16px; color: #1a1a1a;">Choose Your AI Mode:</h4>
+    
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab(event, 'cloud')">☁️ Cloud AI (Easier)</button>
+      <button class="tab-btn" onclick="switchTab(event, 'local')">🖥️ Local AI (Privacy)</button>
+    </div>
+    
+    <!-- Cloud AI Instructions -->
+    <div id="cloud" class="tab-content active">
+      <h4 style="color: #1a1a1a; margin-bottom: 12px;">Setup Cloud AI (2 minutes)</h4>
+      
+      <p><strong>1. Get an API key:</strong></p>
+      <ul style="margin-left: 20px; margin-bottom: 16px;">
+        <li>Go to <a href="https://console.anthropic.com" target="_blank" style="color: #6c8ef5;">console.anthropic.com</a> (Claude - recommended, cheapest)</li>
+        <li>Sign up → copy your API key</li>
+      </ul>
+      
+      <p><strong>2. Paste the key in Office AI:</strong></p>
+      <ol style="margin-left: 20px; margin-bottom: 16px;">
+        <li>In the launcher, go to "Settings" tab</li>
+        <li>Paste your API key in the "Anthropic Key" field</li>
+        <li>Click "Save"</li>
+      </ol>
+      
+      <p><strong>3. Start the server:</strong></p>
+      <ol style="margin-left: 20px;">
+        <li>Click "Start Server" button</li>
+        <li>Status shows "Server running at http://localhost:8000"</li>
+      </ol>
+      
+      <div class="success">
+        <strong>✓ Cloud AI is ready!</strong> Move to Step 4.
+      </div>
+    </div>
+    
+    <!-- Local AI Instructions -->
+    <div id="local" class="tab-content">
+      <h4 style="color: #1a1a1a; margin-bottom: 12px;">Setup Local AI (5 minutes)</h4>
+      
+      <p><strong>1. Download Ollama:</strong></p>
+      <ul style="margin-left: 20px; margin-bottom: 16px;">
+        <li>Go to <a href="https://ollama.com" target="_blank" style="color: #6c8ef5;">ollama.com</a></li>
+        <li>Download and install</li>
+        <li>Open Command Prompt or Terminal</li>
+      </ul>
+      
+      <p><strong>2. Download a model:</strong></p>
+      <div class="code-block">ollama pull llama3</div>
+      <p style="color: #888; font-size: 14px;">This downloads a 4GB AI model (first time only, takes a few minutes)</p>
+      
+      <p><strong>3. Start Ollama:</strong></p>
+      <div class="code-block">ollama serve</div>
+      <p style="color: #888; font-size: 14px;">Keep this window open. Your computer is now running local AI.</p>
+      
+      <p><strong>4. In Office AI, click "Start Server"</strong></p>
+      <p style="color: #888; font-size: 14px;">Office AI will auto-detect Ollama and connect to it.</p>
+      
+      <div class="success">
+        <strong>✓ Local AI is ready!</strong> Move to Step 4. No API costs, complete privacy.
+      </div>
+    </div>
+  </section>
+  
+  <!-- Step 4 -->
+  <section class="step-container">
+    <h3><span class="step-number">4</span>Load Into Office</h3>
+    <p>Now you'll tell Word/Excel/PowerPoint where to find Office AI.</p>
+    
+    <p style="margin-top: 20px;"><strong>In Word (same for Excel/PowerPoint):</strong></p>
+    
+    <ol style="margin-left: 20px; color: #555;">
+      <li style="margin: 8px 0;">Open Word</li>
+      <li style="margin: 8px 0;">Go to <strong>Insert</strong> menu</li>
+      <li style="margin: 8px 0;">Click <strong>Add-ins → Get Add-ins</strong></li>
+      <li style="margin: 8px 0;">Click <strong>Upload My Add-in</strong></li>
+      <li style="margin: 8px 0;">Navigate to the <strong>manifest.xml</strong> file (in your Office AI folder)</li>
+      <li style="margin: 8px 0;">Click <strong>Upload</strong></li>
+    </ol>
+    
+    <div class="screenshot">
+      [Right sidebar shows Office AI panel]<br>
+      <p>The Office AI panel appears in your right sidebar</p>
+    </div>
+    
+    <div class="success">
+      <strong>✓ Office AI is now in Word!</strong> Do the same for Excel and PowerPoint if you want.
+    </div>
+  </section>
+  
+  <!-- Step 5 -->
+  <section class="step-container">
+    <h3><span class="step-number">5</span>Make Your First Request</h3>
+    
+    <p><strong>Try it:</strong></p>
+    <ol style="margin-left: 20px; color: #555;">
+      <li style="margin: 8px 0;">In the Office AI panel, type a question (e.g., "Summarize this document")</li>
+      <li style="margin: 8px 0;">Click "Send"</li>
+      <li style="margin: 8px 0;">Watch the magic happen! ✨</li>
+    </ol>
+    
+    <div class="note">
+      <strong>💡 Pro Tips:</strong>
+      <ul style="margin-left: 20px; margin-top: 8px;">
+        <li>Use the "Tools" tab for one-click actions (Summarize, Fix Grammar, etc.)</li>
+        <li>Click "Use Selection" to pull highlighted text into your question</li>
+        <li>Watch your token counter in the Account tab</li>
+      </ul>
+    </div>
+    
+    <div class="success">
+      <strong>🎉 You're done!</strong> You're now using Office AI.
+    </div>
+  </section>
+  
+  <!-- Troubleshooting -->
+  <section>
+    <h2>Troubleshooting</h2>
+    
+    <h3>🔴 "Server is offline" or won't start</h3>
+    <p><strong>Cloud AI:</strong> Did you paste your API key in Settings? Try clicking "Start Server" again.</p>
+    <p><strong>Local AI:</strong> Is Ollama running? Open Terminal/Command Prompt and run <code style="background: #f0f0f0; padding: 2px 6px;">ollama serve</code></p>
+    
+    <h3>🔴 The add-in won't load in Office</h3>
+    <p>Is the Office AI server running (green status in launcher)? Try hard-refreshing Office with Ctrl+F5.</p>
+    
+    <h3>🔴 "API key is invalid"</h3>
+    <p>Make sure you copied your key correctly from <a href="https://console.anthropic.com" target="_blank" style="color: #6c8ef5;">console.anthropic.com</a></p>
+    
+    <h3>🔴 Everything is frozen/slow</h3>
+    <p>If using Local AI, it depends on your computer's speed. Local AI is slower than cloud.</p>
+  </section>
+  
+  <!-- Next Steps -->
+  <section style="background: #f9fafb; padding: 32px; border-radius: 12px; margin: 40px 0; text-align: center;">
+    <h2 style="border: none; padding-bottom: 0;">You're All Set! 🎉</h2>
+    <p>Now explore the full features:</p>
+    <ul style="list-style: none; margin-top: 20px;">
+      <li><strong>Chat Tab:</strong> Ask anything about your document</li>
+      <li><strong>Tools Tab:</strong> Quick actions (Summarize, Grammar, Formal, etc.)</li>
+      <li><strong>Account Tab:</strong> View your tokens and upgrade your plan</li>
+    </ul>
+    <a href="download.html" class="btn">Download Office AI Now</a>
+  </section>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="features.html">Why Office AI</a>
+    <a href="index.html#features">Features</a>
+    <a href="download.html">Download</a>
+  </div>
+  <p>&copy; 2024 Office AI. All rights reserved.</p>
+</footer>
+
+<script>
+function switchTab(event, tabName) {
+  // Hide all tabs
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  
+  // Show selected tab
+  document.getElementById(tabName).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Office AI</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    
+    nav {
+      background: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: #6c8ef5;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #6c8ef5, #a78bfa);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 14px;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color .3s;
+    }
+    
+    .nav-links a:hover {
+      color: #6c8ef5;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #f5f7fa 0%, #e8eef7 100%);
+      padding: 80px 20px;
+      text-align: center;
+    }
+    
+    .header-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      font-size: 48px;
+      color: #1a1a1a;
+      margin-bottom: 16px;
+    }
+    
+    .subtitle {
+      font-size: 18px;
+      color: #666;
+    }
+    
+    .content {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    
+    .download-box {
+      background: #fff;
+      border: 2px solid #6c8ef5;
+      border-radius: 16px;
+      padding: 48px;
+      text-align: center;
+      margin: 40px 0;
+      box-shadow: 0 8px 32px rgba(108, 142, 245, 0.15);
+    }
+    
+    .download-icon {
+      font-size: 64px;
+      margin-bottom: 24px;
+    }
+    
+    .download-box h2 {
+      font-size: 32px;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+      border: none;
+      padding: 0;
+    }
+    
+    .file-info {
+      color: #888;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+    
+    .btn-download {
+      display: inline-block;
+      padding: 16px 48px;
+      background: linear-gradient(135deg, #6c8ef5, #5a7bd0);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 18px;
+      transition: all .3s;
+      box-shadow: 0 8px 20px rgba(108, 142, 245, 0.3);
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn-download:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(108, 142, 245, 0.4);
+    }
+    
+    .btn-download:active {
+      transform: translateY(0);
+    }
+    
+    .requirements {
+      background: #f9fafb;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 32px;
+      margin: 40px 0;
+    }
+    
+    .requirements h3 {
+      font-size: 20px;
+      color: #1a1a1a;
+      margin-bottom: 16px;
+    }
+    
+    .req-list {
+      list-style: none;
+    }
+    
+    .req-list li {
+      padding: 8px 0;
+      color: #555;
+    }
+    
+    .req-list li:before {
+      content: "✓ ";
+      color: #4caf88;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+    
+    .features-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      margin: 40px 0;
+    }
+    
+    .feature-item {
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+    }
+    
+    .feature-item h4 {
+      color: #1a1a1a;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    
+    .feature-item p {
+      color: #666;
+      font-size: 14px;
+    }
+    
+    h2 {
+      font-size: 32px;
+      color: #1a1a1a;
+      margin: 40px 0 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #e0e0e0;
+    }
+    
+    .faq {
+      margin: 40px 0;
+    }
+    
+    .faq-item {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    
+    .faq-item h4 {
+      color: #1a1a1a;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    
+    .faq-item p {
+      color: #666;
+      font-size: 14px;
+    }
+    
+    .note {
+      background: #e8eef7;
+      border-left: 4px solid #6c8ef5;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 24px 0;
+      color: #555;
+    }
+    
+    .success {
+      background: #e8f5e9;
+      border-left: 4px solid #4caf88;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 24px 0;
+      color: #555;
+    }
+    
+    .system-check {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 24px;
+      margin: 24px 0;
+    }
+    
+    .check-btn {
+      padding: 8px 16px;
+      background: #6c8ef5;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    
+    .check-btn:hover {
+      background: #5a7bd0;
+    }
+    
+    footer {
+      background: #1a1a1a;
+      color: #e0e0e0;
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 80px;
+    }
+    
+    .footer-links a {
+      color: #6c8ef5;
+      text-decoration: none;
+      margin: 0 16px;
+    }
+    
+    @media (max-width: 768px) {
+      h1 { font-size: 32px; }
+      h2 { font-size: 24px; }
+      .download-box { padding: 32px 24px; }
+      .btn-download { font-size: 16px; padding: 14px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-container">
+    <div class="logo">
+      <div class="logo-icon">✦</div>
+      Office AI
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="features.html">Why Office AI</a></li>
+      <li><a href="getting-started.html">Getting Started</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Header -->
+<section class="header">
+  <div class="header-container">
+    <h1>Download Office AI</h1>
+    <p class="subtitle">Free to try. Upgrade when you need more tokens.</p>
+  </div>
+</section>
+
+<!-- Content -->
+<div class="content">
+  
+  <!-- Download Box -->
+  <div class="download-box">
+    <div class="download-icon">⬇️</div>
+    <h2>Office AI Installer</h2>
+    <p class="file-info">Windows • ~150 MB • Includes everything</p>
+    <button class="btn-download" onclick="startDownload()">Download Now</button>
+    <p style="color: #888; font-size: 12px; margin-top: 16px;">
+      Alternatively: <a href="#" style="color: #6c8ef5;">Download ZIP folder</a>
+    </p>
+  </div>
+  
+  <div class="success">
+    <strong>✓ 100% free.</strong> No credit card required. Includes free tier (10,000 tokens/month).
+  </div>
+  
+  <!-- What's Included -->
+  <h2>What You Get</h2>
+  <div class="features-list">
+    <div class="feature-item">
+      <h4>🖥️ Desktop Launcher</h4>
+      <p>Beautiful PyQt5 app to manage your server, configure settings, and view stats.</p>
+    </div>
+    <div class="feature-item">
+      <h4>💼 Office Add-in</h4>
+      <p>Built-in chat, tools, and account management. Works in Word, Excel, PowerPoint.</p>
+    </div>
+    <div class="feature-item">
+      <h4>🧠 AI Backend</h4>
+      <p>FastAPI server with token tracking, user management, and cloud/local AI support.</p>
+    </div>
+    <div class="feature-item">
+      <h4>☁️ Cloud AI Ready</h4>
+      <p>Support for OpenAI (GPT), Anthropic (Claude), and Google Gemini.</p>
+    </div>
+    <div class="feature-item">
+      <h4>🖥️ Local AI Ready</h4>
+      <p>Optional Ollama integration for complete privacy (no API costs).</p>
+    </div>
+    <div class="feature-item">
+      <h4>📊 Token Tracking</h4>
+      <p>SQLite database tracks your usage. Monthly limits enforced per tier.</p>
+    </div>
+  </div>
+  
+  <!-- Requirements -->
+  <div class="requirements">
+    <h3>System Requirements</h3>
+    <ul class="req-list">
+      <li>Windows 10 or later (Mac/Linux coming soon)</li>
+      <li>At least 500 MB free disk space</li>
+      <li>Internet connection (for Cloud AI)</li>
+      <li>That's it! Python is included.</li>
+    </ul>
+  </div>
+  
+  <!-- Pricing -->
+  <h2>Pricing Tiers</h2>
+  <div class="features-list">
+    <div class="feature-item">
+      <h4>🆓 Free</h4>
+      <p><strong>$0/month</strong><br>
+         10,000 tokens<br>
+         Perfect to try it out</p>
+    </div>
+    <div class="feature-item">
+      <h4>⭐ Pro</h4>
+      <p><strong>$9/month</strong><br>
+         100,000 tokens<br>
+         For heavy users</p>
+    </div>
+    <div class="feature-item">
+      <h4>🚀 Enterprise</h4>
+      <p><strong>$49/month</strong><br>
+         1,000,000 tokens<br>
+         For teams</p>
+    </div>
+  </div>
+  
+  <div class="note">
+    <strong>💡 Tokens Explained:</strong> One token ≈ 4 characters. 10,000 tokens = about 40,000 characters of AI usage per month.
+  </div>
+  
+  <!-- Getting Started -->
+  <h2>Next Steps</h2>
+  <ol style="margin-left: 20px; color: #555;">
+    <li style="margin: 12px 0;"><strong>Download</strong> Office AI using the button above</li>
+    <li style="margin: 12px 0;"><strong>Install</strong> by double-clicking the installer</li>
+    <li style="margin: 12px 0;"><strong>Follow</strong> the <a href="getting-started.html" style="color: #6c8ef5; text-decoration: none; font-weight: 600;">Getting Started guide</a> (5 minutes)</li>
+    <li style="margin: 12px 0;"><strong>Start using</strong> in Word, Excel, or PowerPoint</li>
+    <li style="margin: 12px 0;"><strong>Upgrade</strong> when you need more tokens (optional)</li>
+  </ol>
+  
+  <!-- FAQ -->
+  <h2>Frequently Asked Questions</h2>
+  
+  <div class="faq">
+    <div class="faq-item">
+      <h4>Is it really free?</h4>
+      <p>Yes! The free tier includes 10,000 tokens/month. That's enough for light to moderate use. Upgrade to Pro or Enterprise if you need more.</p>
+    </div>
+    
+    <div class="faq-item">
+      <h4>What if I don't like it?</h4>
+      <p>No problem. Uninstall anytime. All your data stays on your computer (we don't store anything in the cloud).</p>
+    </div>
+    
+    <div class="faq-item">
+      <h4>Do I need to know Python?</h4>
+      <p>No. Everything is pre-packaged. Just download, install, and run. No coding required.</p>
+    </div>
+    
+    <div class="faq-item">
+      <h4>Can I use it offline?</h4>
+      <p>Cloud AI requires internet. Local AI (Ollama) works 100% offline with no API costs.</p>
+    </div>
+    
+    <div class="faq-item">
+      <h4>Is my data safe?</h4>
+      <p>With Local AI, yes — your data never leaves your computer. With Cloud AI, it depends on the provider (OpenAI, Anthropic, Gemini). Check their privacy policies.</p>
+    </div>
+    
+    <div class="faq-item">
+      <h4>What if I hit my token limit?</h4>
+      <p>You'll see an "Upgrade your plan" button in the app. Click it to increase your tier. Monthly limits reset automatically.</p>
+    </div>
+    
+    <div class="faq-item">
+      <h4>Can I use it on Mac or Linux?</h4>
+      <p>Windows is supported now. Mac and Linux support coming soon. Sign up for updates.</p>
+    </div>
+    
+    <div class="faq-item">
+      <h4>How do I cancel?</h4>
+      <p>You can cancel your subscription anytime. No long-term contracts, no penalties.</p>
+    </div>
+  </div>
+  
+  <!-- Final CTA -->
+  <section style="background: linear-gradient(135deg, #f5f7fa 0%, #e8eef7 100%); padding: 48px 32px; border-radius: 16px; text-align: center; margin: 60px 0;">
+    <h2 style="border: none; padding: 0;">Ready to Transform Your Documents?</h2>
+    <p style="font-size: 18px; margin: 16px 0;">Download Office AI now and experience AI inside Word, Excel, and PowerPoint.</p>
+    <button class="btn-download" onclick="startDownload()">Download Now</button>
+  </section>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="features.html">Why Office AI</a>
+    <a href="getting-started.html">Getting Started</a>
+  </div>
+  <p>&copy; 2024 Office AI. All rights reserved.</p>
+</footer>
+
+<script>
+function startDownload() {
+  // This would normally link to your actual exe file
+  // For now, it's a placeholder
+  alert('Download link would point to your OfficeAI.exe file hosted on your server.\n\nExample: https://yourdomain.com/downloads/OfficeAI.exe');
+  
+  // In production, you would use:
+  // window.location.href = 'https://your-domain.com/downloads/OfficeAI.exe';
+}
+</script>
+
+</body>
+</html>

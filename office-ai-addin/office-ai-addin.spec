@@ -1,7 +1,7 @@
 # -*- mode: python ; coding: utf-8 -*-
 """
-PyInstaller spec for Office AI Add-in
-Run: pyinstaller office-ai-addin.spec
+PyInstaller spec for Exelidoc Add-in
+Run: pyinstaller Exelidoc-addin.spec
 This creates: dist/Exelidoc.exe (single file with everything bundled)
 """
 

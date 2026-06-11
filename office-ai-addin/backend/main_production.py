@@ -1,5 +1,5 @@
 """
-Office AI Add-in - Production Backend with Subscription Model
+Exelidoc Add-in - Production Backend with Subscription Model
 Run with: uvicorn main_production:app --reload --port 8000
 
 BUSINESS MODEL:
@@ -21,7 +21,7 @@ import os
 from datetime import datetime, timedelta
 from contextlib import contextmanager
 
-app = FastAPI(title="Office AI Add-in Backend", version="2.0.0")
+app = FastAPI(title="Exelidoc Add-in Backend", version="2.0.0")
 
 # ─── Configuration ─────────────────────────────────────────────────────────────
 

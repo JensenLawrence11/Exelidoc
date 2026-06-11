@@ -1,5 +1,5 @@
 """
-Office AI Add-in - Desktop Launcher
+Exelidoc Add-in - Desktop Launcher
 PyQt5 GUI application to manage the backend server and user settings.
 """
 
@@ -79,7 +79,7 @@ class ServerThread(QThread):
 class ExelidocLauncher(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Office AI Add-in — Control Panel")
+        self.setWindowTitle("Exelidoc Add-in — Control Panel")
         self.setGeometry(100, 100, 900, 700)
         self.setStyleSheet(self._get_stylesheet())
         
@@ -182,7 +182,7 @@ class ExelidocLauncher(QMainWindow):
         layout = QVBoxLayout(central)
         
         # ─── Title ────────────────────────────────────────────────────────
-        title = QLabel("Office AI Add-in — Server Control Panel")
+        title = QLabel("Exelidoc Add-in — Server Control Panel")
         title.setFont(QFont("Arial", 16, QFont.Bold))
         layout.addWidget(title)
         
@@ -314,7 +314,7 @@ class ExelidocLauncher(QMainWindow):
         help_text = QTextEdit()
         help_text.setReadOnly(True)
         help_text.setText("""
-OFFICE AI ADD-IN — SERVER CONTROL PANEL
+Exelidoc ADD-IN — SERVER CONTROL PANEL
 
 1. START THE SERVER
    Click "Start Server" to begin. The backend will run on http://localhost:8000
@@ -329,7 +329,7 @@ OFFICE AI ADD-IN — SERVER CONTROL PANEL
    In Word/Excel/PowerPoint:
    • Insert → Add-ins → Upload My Add-in
    • Select the manifest.xml file
-   • The Office AI panel appears on the right
+   • The Exelidoc panel appears on the right
 
 4. USERS SIGN UP
    Users enter their email in the "Account" tab

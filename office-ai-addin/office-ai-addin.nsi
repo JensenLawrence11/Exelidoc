@@ -1,14 +1,14 @@
-; Office AI Add-in Installer
-; Build with: makensis office-ai-addin.nsi
+; Exelidoc Add-in Installer
+; Build with: makensis Exelidoc-addin.nsi
 
 !include "MUI2.nsh"
 !include "x64.nsh"
 
 ; ─── Settings ──────────────────────────────────────────────────────────────────
 
-Name "Office AI Add-in"
+Name "Exelidoc Add-in"
 OutFile "Exelidoc-Installer.exe"
-InstallDir "$PROGRAMFILES\Office AI"
+InstallDir "$PROGRAMFILES\Exelidoc"
 RequestExecutionLevel admin
 
 ; ─── MUI Settings ──────────────────────────────────────────────────────────────
@@ -29,10 +29,10 @@ Section "Install"
     File /r "dist\Exelidoc\*.*"
     
     ; Create shortcuts
-    CreateDirectory "$SMPROGRAMS\Office AI"
-    CreateShortcut "$SMPROGRAMS\Office AI\Office AI Control Panel.lnk" \
+    CreateDirectory "$SMPROGRAMS\Exelidoc"
+    CreateShortcut "$SMPROGRAMS\Exelidoc\Exelidoc Control Panel.lnk" \
         "$INSTDIR\Exelidoc.exe" "" "$INSTDIR\Exelidoc.exe" 0
-    CreateShortcut "$DESKTOP\Office AI Control Panel.lnk" \
+    CreateShortcut "$DESKTOP\Exelidoc Control Panel.lnk" \
         "$INSTDIR\Exelidoc.exe" "" "$INSTDIR\Exelidoc.exe" 0
     
     ; Register manifest with Office (optional, advanced)
@@ -40,7 +40,7 @@ Section "Install"
     
     ; Write uninstaller
     WriteUninstaller "$INSTDIR\Uninstall.exe"
-    CreateShortcut "$SMPROGRAMS\Office AI\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
+    CreateShortcut "$SMPROGRAMS\Exelidoc\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
     
 SectionEnd
 
@@ -48,6 +48,6 @@ SectionEnd
 
 Section "Uninstall"
     RMDir /r "$INSTDIR"
-    RMDir /r "$SMPROGRAMS\Office AI"
-    Delete "$DESKTOP\Office AI Control Panel.lnk"
+    RMDir /r "$SMPROGRAMS\Exelidoc"
+    Delete "$DESKTOP\Exelidoc Control Panel.lnk"
 SectionEnd

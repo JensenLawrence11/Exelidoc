@@ -1,10 +1,10 @@
 @echo off
-REM Office AI Add-in - One-Click Build Script for Windows
+REM Exelidoc Add-in - One-Click Build Script for Windows
 REM Run this after installing Python and dependencies
 
 echo.
 echo ========================================
-echo Office AI Add-in - Build Script
+echo Exelidoc Add-in - Build Script
 echo ========================================
 echo.
 
@@ -27,7 +27,7 @@ if errorlevel 1 (
 
 echo.
 echo [2/4] Building executable with PyInstaller...
-pyinstaller office-ai-addin.spec
+pyinstaller Exelidoc-addin.spec
 if errorlevel 1 (
     echo ERROR: PyInstaller build failed
     pause
@@ -48,12 +48,12 @@ if /i "%CREATE_INSTALLER%"=="y" (
     echo [4/4] Creating installer...
     
     REM Check if NSIS is installed
-    "C:\Program Files (x86)\NSIS\makensis.exe" office-ai-addin.nsi
+    "C:\Program Files (x86)\NSIS\makensis.exe" Exelidoc-addin.nsi
     if errorlevel 1 (
         echo.
         echo NOTE: NSIS not found at default location
         echo Download NSIS from: https://nsis.sourceforge.io/Download
-        echo Then run: makensis office-ai-addin.nsi
+        echo Then run: makensis Exelidoc-addin.nsi
         pause
         exit /b 0
     )
@@ -63,7 +63,7 @@ if /i "%CREATE_INSTALLER%"=="y" (
 ) else (
     echo.
     echo You can create installer later by running:
-    echo   makensis office-ai-addin.nsi
+    echo   makensis Exelidoc-addin.nsi
     echo (Install NSIS first from https://nsis.sourceforge.io/)
 )
 

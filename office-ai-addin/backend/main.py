@@ -1,5 +1,5 @@
 """
-Office AI Add-in - Python Backend
+Exelidoc Add-in - Python Backend
 Run with: uvicorn main:app --reload --port 8000
 """
 
@@ -15,7 +15,7 @@ import sys
 import subprocess
 import importlib.util
 
-app = FastAPI(title="Office AI Add-in Backend", version="1.0.0")
+app = FastAPI(title="Exelidoc Add-in Backend", version="1.0.0")
 
 # Allow the Office add-in (localhost) to call this backend
 app.add_middleware(

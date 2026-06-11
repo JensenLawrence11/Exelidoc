@@ -1,4 +1,4 @@
-# Quick Start — Office AI with Subscription Model
+# Quick Start — Exelidoc with Subscription Model
 
 ## 📋 Files You Have
 

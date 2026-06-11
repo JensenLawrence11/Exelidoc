@@ -1,4 +1,4 @@
-# Office AI Add-in — Subscription Model Setup
+# Exelidoc Add-in — Subscription Model Setup
 
 Your backend now operates like **Copilot Pro**: you control the API key, users pay for token access tiers.
 

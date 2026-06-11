@@ -1,4 +1,4 @@
-# Building Office AI Add-in as a Single .EXE
+# Building Exelidoc Add-in as a Single .EXE
 
 This guide shows how to package everything into `Exelidoc.exe` that users can download and run.
 
@@ -48,7 +48,7 @@ API_KEYS = {
 ### On Windows
 
 ```bash
-pyinstaller office-ai-addin.spec
+pyinstaller Exelidoc-addin.spec
 ```
 
 This creates:
@@ -81,12 +81,12 @@ Download from: https://nsis.sourceforge.io/Download
 ### Build Installer
 
 ```bash
-makensis office-ai-addin.nsi
+makensis Exelidoc-addin.nsi
 ```
 
 This creates: `Exelidoc-Installer.exe`
 
-Users run this → it installs to `C:\Program Files\Office AI` → shortcuts on desktop
+Users run this → it installs to `C:\Program Files\Exelidoc` → shortcuts on desktop
 
 ---
 
@@ -146,7 +146,7 @@ Use Electron Updater or similar to push updates automatically
 5. **Server is running** at http://localhost:8000
 6. **In Word/Excel → Insert → Add-ins → Upload My Add-in**
 7. **Select manifest.xml** (included)
-8. **Office AI panel appears** → Ready to use!
+8. **Exelidoc panel appears** → Ready to use!
 
 ---
 
@@ -229,7 +229,7 @@ pip install pyinstaller==6.10.0
 ## 🎯 Next Steps
 
 1. ✅ **Add your API keys** to `main_production.py`
-2. ✅ **Run `pyinstaller office-ai-addin.spec`**
+2. ✅ **Run `pyinstaller Exelidoc-addin.spec`**
 3. ✅ **Test `dist/Exelidoc/Exelidoc.exe`** on your machine
 4. ✅ **Zip the `dist/Exelidoc` folder** or **build installer with NSIS**
 5. ✅ **Upload to your website** for download

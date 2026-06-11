@@ -1,4 +1,4 @@
-# 🌐 Office AI Website — Complete Guide
+# 🌐 Exelidoc Website — Complete Guide
 
 Your professional website is ready! Here's everything you need to know.
 
@@ -80,7 +80,7 @@ Add your email, Twitter, or support link in the footer. Find in each page:
     <a href="index.html">Home</a>
     <!-- Add your links here -->
   </div>
-  <p>&copy; 2024 Office AI. All rights reserved.</p>
+  <p>&copy; 2024 Exelidoc. All rights reserved.</p>
 </footer>
 ```
 
@@ -118,7 +118,7 @@ You can add a "Buy Now" button that links to Stripe:
 - **CTA section** — Final call to action
 - **Navigation** — Links to all pages
 
-### **features.html** — Why Office AI Is Different
+### **features.html** — Why Exelidoc Is Different
 - **Local AI section** — Deep dive on privacy, use cases, setup
 - **Cloud AI section** — Power, speed, cost breakdown
 - **Comparison table** — Feature-by-feature comparison
@@ -158,14 +158,14 @@ In the navigation, find:
 ```html
 <div class="logo">
   <div class="logo-icon">✦</div>
-  Office AI
+  Exelidoc
 </div>
 ```
 
 Replace `✦` with your emoji or remove the icon entirely.
 
 ### Change Company Name
-Search for "Office AI" and replace with your company name throughout all HTML files.
+Search for "Exelidoc" and replace with your company name throughout all HTML files.
 
 ### Add Your Logo
 Replace `✦` with an actual logo image:
@@ -274,7 +274,7 @@ This is important for trust and SEO.
 ### Landing Page (index.html)
 ```
 ┌─────────────────────────────────────┐
-│  OFFICE AI                          │
+│  Exelidoc                          │
 │  Home | Features | Getting Started  │
 ├─────────────────────────────────────┤
 │                                     │
@@ -290,7 +290,7 @@ This is important for trust and SEO.
 │  - Token-Based Pricing              │
 │  ...                                │
 ├─────────────────────────────────────┤
-│  Why Choose Office AI?              │
+│  Why Choose Exelidoc?              │
 │  ☐ 0$               ☐ 3 Providers   │
 │  ☐ 8 Tools          ☐ 100% Privacy  │
 └─────────────────────────────────────┘
@@ -358,7 +358,7 @@ Just:
 3. Deploy to Netlify (drag & drop)
 4. Share the link
 
-That's it! Your Office AI product is now live online. 🎉
+That's it! Your Exelidoc product is now live online. 🎉
 
 ---
 

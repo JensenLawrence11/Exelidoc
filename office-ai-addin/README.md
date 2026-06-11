@@ -1,4 +1,4 @@
-# Office AI Add-in
+# Exelidoc Add-in
 
 An AI assistant that runs inside Microsoft Word, Excel, and PowerPoint with full subscription model support. Everything runs locally on the user's machine.
 
@@ -14,7 +14,7 @@ An AI assistant that runs inside Microsoft Word, Excel, and PowerPoint with full
 ## 📦 Project Structure
 
 ```
-office-ai-addin/
+Exelidoc-addin/
 ├── launcher.py                      ← Desktop launcher (PyQt5 GUI)
 ├── backend/
 │   ├── main_production.py          ← FastAPI backend with token tracking
@@ -24,8 +24,8 @@ office-ai-addin/
 │   ├── taskpane_production.html    ← Office UI with subscriptions
 │   ├── taskpane.html               ← Original version (reference)
 │   └── manifest.xml
-├── office-ai-addin.spec            ← PyInstaller config
-├── office-ai-addin.nsi             ← NSIS installer config
+├── Exelidoc-addin.spec            ← PyInstaller config
+├── Exelidoc-addin.nsi             ← NSIS installer config
 ├── build.bat                        ← Windows build script
 ├── BUILD_EXE.md                    ← How to build the .exe
 └── QUICK_START.md                  ← Quick setup guide
@@ -82,7 +82,7 @@ build.bat
 
 **Option B: Manual**
 ```bash
-pyinstaller office-ai-addin.spec
+pyinstaller Exelidoc-addin.spec
 ```
 
 This creates: `dist/Exelidoc/Exelidoc.exe` (~150 MB with all dependencies)
@@ -105,7 +105,7 @@ powershell -Command "Compress-Archive -Path dist/Exelidoc -DestinationPath Exeli
 
 **Option B: Installer (NSIS)**
 ```bash
-makensis office-ai-addin.nsi
+makensis Exelidoc-addin.nsi
 # Creates: Exelidoc-Installer.exe
 ```
 
@@ -282,7 +282,7 @@ Edit `backend/main_production.py` to default to OpenAI instead of Anthropic.
 - **Custom AI models** — let Pro users fine-tune behavior
 - **Analytics dashboard** — users see their token burn rate
 - **Mobile app** — use same backend, different UI
-- **Slack integration** — use Office AI from Slack
+- **Slack integration** — use Exelidoc from Slack
 - **Automation** — schedule AI tasks to run at night
 
 ---

@@ -7,15 +7,15 @@
   <link rel="icon" type="image/x-icon" href="icon.ico">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
+   
     html { scroll-behavior: smooth; }
-    
+   
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       line-height: 1.6;
       color: #333;
     }
-    
+   
     nav {
       background: #fff;
       border-bottom: 1px solid #e0e0e0;
@@ -24,7 +24,7 @@
       top: 0;
       z-index: 100;
     }
-    
+   
     .nav-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -33,7 +33,7 @@
       justify-content: space-between;
       align-items: center;
     }
-    
+   
     .logo {
       font-size: 20px;
       font-weight: 700;
@@ -42,36 +42,31 @@
       align-items: center;
       gap: 8px;
     }
-    
+   
     .logo-icon {
       width: 28px;
       height: 28px;
-      background: linear-gradient(135deg, #6c8ef5, #a78bfa);
       border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 14px;
+      object-fit: contain;
     }
-    
+   
     .nav-links {
       display: flex;
       gap: 30px;
       list-style: none;
     }
-    
+   
     .nav-links a {
       text-decoration: none;
       color: #333;
       font-weight: 500;
       transition: color .3s;
     }
-    
+   
     .nav-links a:hover {
       color: #6c8ef5;
     }
-    
+   
     .nav-cta {
       background: #6c8ef5;
       color: #fff;
@@ -80,39 +75,39 @@
       text-decoration: none;
       font-weight: 600;
     }
-    
+   
     .header {
       background: linear-gradient(135deg, #f5f7fa 0%, #e8eef7 100%);
       padding: 80px 20px;
       text-align: center;
     }
-    
+   
     .header-container {
       max-width: 800px;
       margin: 0 auto;
     }
-    
+   
     h1 {
       font-size: 48px;
       color: #1a1a1a;
       margin-bottom: 16px;
     }
-    
+   
     .subtitle {
       font-size: 18px;
       color: #666;
     }
-    
+   
     .content {
       max-width: 1000px;
       margin: 60px auto;
       padding: 0 20px;
     }
-    
+   
     .section {
       margin-bottom: 80px;
     }
-    
+   
     h2 {
       font-size: 32px;
       color: #1a1a1a;
@@ -120,20 +115,20 @@
       padding-bottom: 16px;
       border-bottom: 2px solid #e0e0e0;
     }
-    
+   
     h3 {
       font-size: 24px;
       color: #1a1a1a;
       margin-top: 32px;
       margin-bottom: 16px;
     }
-    
+   
     p {
       font-size: 16px;
       color: #555;
       margin-bottom: 16px;
     }
-    
+   
     .feature-list {
       background: #f9fafb;
       padding: 30px;
@@ -141,20 +136,20 @@
       margin: 24px 0;
       border-left: 4px solid #6c8ef5;
     }
-    
+   
     .feature-list li {
       list-style: none;
       padding: 10px 0;
       color: #555;
     }
-    
+   
     .feature-list li:before {
       content: "✓ ";
       color: #6c8ef5;
       font-weight: bold;
       margin-right: 8px;
     }
-    
+   
     .comparison-table {
       width: 100%;
       border-collapse: collapse;
@@ -164,7 +159,7 @@
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
-    
+   
     .comparison-table th {
       background: #6c8ef5;
       color: #fff;
@@ -172,23 +167,23 @@
       text-align: left;
       font-weight: 600;
     }
-    
+   
     .comparison-table td {
       padding: 16px;
       border-bottom: 1px solid #e0e0e0;
     }
-    
+   
     .comparison-table tr:last-child td {
       border-bottom: none;
     }
-    
+   
     .comparison-table tr:nth-child(even) {
       background: #f9fafb;
     }
-    
+   
     .check { color: #4caf88; font-weight: bold; }
     .cross { color: #e8564a; font-weight: bold; }
-    
+   
     .code-block {
       background: #1a1a1a;
       color: #e0e0e0;
@@ -199,7 +194,7 @@
       overflow-x: auto;
       margin: 20px 0;
     }
-    
+   
     .use-case {
       background: #e8eef7;
       padding: 24px;
@@ -207,17 +202,17 @@
       margin: 24px 0;
       border-left: 4px solid #6c8ef5;
     }
-    
+   
     .use-case h4 {
       color: #1a1a1a;
       margin-bottom: 8px;
     }
-    
+   
     .use-case p {
       font-size: 15px;
       color: #555;
     }
-    
+   
     .btn {
       display: inline-block;
       padding: 12px 28px;
@@ -229,11 +224,11 @@
       transition: background .3s;
       margin-top: 20px;
     }
-    
+   
     .btn:hover {
       background: #5a7bd0;
     }
-    
+   
     footer {
       background: #1a1a1a;
       color: #e0e0e0;
@@ -241,13 +236,13 @@
       text-align: center;
       margin-top: 80px;
     }
-    
+   
     .footer-links a {
       color: #6c8ef5;
       text-decoration: none;
       margin: 0 16px;
     }
-    
+   
     @media (max-width: 768px) {
       h1 { font-size: 32px; }
       h2 { font-size: 24px; }
@@ -257,11 +252,12 @@
 </head>
 <body>
 
+
 <!-- Navigation -->
 <nav>
   <div class="nav-container">
     <div class="logo">
-      <div class="logo-icon">✦</div>
+      <img class="logo-icon" src="icon.ico" alt="Exelidoc">
       Exelidoc
     </div>
     <ul class="nav-links">
@@ -273,6 +269,7 @@
   </div>
 </nav>
 
+
 <!-- Header -->
 <section class="header">
   <div class="header-container">
@@ -281,15 +278,16 @@
   </div>
 </section>
 
+
 <!-- Content -->
 <div class="content">
-  
+ 
   <!-- Local AI Section -->
   <section class="section">
     <h2>🖥️ Local AI — Your Computer, Your Data</h2>
-    
+   
     <p>With Local AI powered by Ollama, everything runs on your computer. Your documents never leave your machine.</p>
-    
+   
     <h3>Perfect For:</h3>
     <ul class="feature-list">
       <li>Confidential documents (contracts, medical records, legal)</li>
@@ -298,10 +296,10 @@
       <li>Users without reliable internet</li>
       <li>Zero API costs</li>
     </ul>
-    
+   
     <h3>How It Works</h3>
     <p>You download Ollama (open-source AI framework), run a model on your machine, and Exelidoc connects to it. Everything stays local. No cloud. No third parties. No data leaving your computer.</p>
-    
+   
     <h3>Getting Started with Local AI</h3>
     <ol style="margin-left: 20px; color: #555;">
       <li style="margin: 8px 0;">Download Ollama from <strong>ollama.com</strong></li>
@@ -310,19 +308,19 @@
       <li style="margin: 8px 0;">In Exelidoc, switch to "Local AI" mode</li>
       <li style="margin: 8px 0;">Start using — no API costs, no internet needed</li>
     </ol>
-    
+   
     <div class="use-case">
       <h4>💼 Example Use Case</h4>
       <p>A lawyer reviewing confidential client documents. Uses Local AI so the document text never leaves their computer. Complete privacy, no API costs.</p>
     </div>
   </section>
-  
+ 
   <!-- Cloud AI Section -->
   <section class="section">
     <h2>☁️ Cloud AI — Maximum Power & Speed</h2>
-    
+   
     <p>Connect to state-of-the-art AI models from OpenAI (GPT), Anthropic (Claude), or Google (Gemini). Get the best possible responses in seconds.</p>
-    
+   
     <h3>Perfect For:</h3>
     <ul class="feature-list">
       <li>Fastest, most powerful responses</li>
@@ -331,29 +329,29 @@
       <li>Content creators</li>
       <li>Pay-as-you-go (very affordable)</li>
     </ul>
-    
+   
     <h3>How It Works</h3>
     <p>You provide your API key (OpenAI, Anthropic, or Gemini). Exelidoc sends requests to their servers and gets back the best AI responses available. You pay only for the tokens you use.</p>
-    
+   
     <h3>Typical Cloud AI Costs</h3>
     <ul class="feature-list">
       <li><strong>GPT-4:</strong> ~$0.03 per 1,000 tokens</li>
       <li><strong>Claude 3:</strong> ~$0.003 per 1,000 tokens (very cheap)</li>
       <li><strong>Gemini:</strong> ~$0.0005 per 1,000 tokens (cheapest)</li>
     </ul>
-    
+   
     <p style="color: #6c8ef5; font-weight: 600; margin-top: 20px;">Translation: You can get 1 million tokens for $0.50–$30, depending on the model.</p>
-    
+   
     <div class="use-case">
       <h4>📝 Example Use Case</h4>
       <p>A content creator writing blog articles. Uses Cloud AI with Claude for high-quality writing. Costs ~$5/month. Gets published-ready content in seconds.</p>
     </div>
   </section>
-  
+ 
   <!-- Comparison Section -->
   <section class="section">
     <h2>Local vs Cloud: Side-by-Side</h2>
-    
+   
     <table class="comparison-table">
       <thead>
         <tr>
@@ -406,11 +404,11 @@
       </tbody>
     </table>
   </section>
-  
+ 
   <!-- Which Should You Use -->
   <section class="section">
     <h2>Which One Should You Choose?</h2>
-    
+   
     <div class="use-case">
       <h4>✅ Choose Local AI If:</h4>
       <p>• You're working with confidential documents<br>
@@ -419,7 +417,7 @@
          • You're okay with slightly slower responses<br>
          • You have a decent computer</p>
     </div>
-    
+   
     <div class="use-case">
       <h4>✅ Choose Cloud AI If:</h4>
       <p>• You want the best possible AI responses<br>
@@ -428,54 +426,54 @@
          • You're fine with minimal API costs ($5-20/month)<br>
          • You don't want to install extra software</p>
     </div>
-    
+   
     <p style="margin-top: 32px; font-size: 18px; font-weight: 600; color: #6c8ef5;">
       <strong>🎯 Best Part:</strong> You can switch between them anytime. Use local for sensitive docs, cloud for everything else.
     </p>
   </section>
-  
+ 
   <!-- Real Examples -->
   <section class="section">
     <h2>Real-World Examples</h2>
-    
+   
     <h3>Lawyer - Local AI</h3>
     <p style="background: #f9fafb; padding: 20px; border-radius: 8px; border-left: 4px solid #6c8ef5;">
       Sarah is a lawyer reviewing confidential client contracts. She uses Exelidoc with Local AI (Ollama). Her document text never leaves her computer. She pays $0. Perfect.
     </p>
-    
+   
     <h3>Writer - Cloud AI</h3>
     <p style="background: #f9fafb; padding: 20px; border-radius: 8px; border-left: 4px solid #6c8ef5;">
       Marcus is a blogger writing 20 articles per month. He uses Cloud AI with Claude. Each article costs ~$0.10 in API tokens. He gets published-ready content in minutes. Total cost: ~$2/month.
     </p>
-    
+   
     <h3>Researcher - Mixed</h3>
     <p style="background: #f9fafb; padding: 20px; border-radius: 8px; border-left: 4px solid #6c8ef5;">
       Dr. Chen does medical research. For patient data, she uses Local AI. For literature analysis, she uses Cloud AI. She gets privacy for sensitive data and power for complex analysis.
     </p>
   </section>
-  
+ 
   <!-- FAQ -->
   <section class="section">
     <h2>Frequently Asked Questions</h2>
-    
+   
     <h3>What's Ollama?</h3>
     <p>Ollama is a free, open-source framework for running AI models locally. It handles all the technical complexity. You just download it and click a button.</p>
-    
+   
     <h3>Do I need to be tech-savvy to use Local AI?</h3>
     <p>No. Just download Ollama and run it. Exelidoc handles the rest. It's as easy as downloading Chrome.</p>
-    
+   
     <h3>Is Cloud AI expensive?</h3>
     <p>No. Claude costs about $0.003 per 1,000 tokens. You can write 100,000 words for $0.30. Most users spend $5-20/month.</p>
-    
+   
     <h3>Can I switch between Local and Cloud?</h3>
     <p>Yes! One-click toggle in Exelidoc. Use local for sensitive docs, cloud for everything else.</p>
-    
+   
     <h3>Which AI model is best?</h3>
     <p><strong>For quality:</strong> Claude 3 Opus or GPT-4<br>
        <strong>For speed:</strong> Claude 3 Haiku or GPT-4 Turbo<br>
        <strong>For cost:</strong> Gemini or Claude 3 Haiku</p>
   </section>
-  
+ 
   <!-- CTA -->
   <section style="text-align: center; margin: 60px 0;">
     <h2>Ready to Experience Both?</h2>
@@ -483,7 +481,9 @@
     <a href="download.html" class="btn">Download Now</a>
   </section>
 
+
 </div>
+
 
 <!-- Footer -->
 <footer>
@@ -492,9 +492,11 @@
     <a href="index.html#features">Features</a>
     <a href="getting-started.html">Getting Started</a>
     <a href="download.html">Download</a>
+    <a href="privacy.html">Privacy Policy</a>
   </div>
   <p>&copy; 2024 Exelidoc. All rights reserved.</p>
 </footer>
+
 
 </body>
 </html>

@@ -7,17 +7,17 @@
   <link rel="icon" type="image/x-icon" href="icon.ico">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
+   
     html { scroll-behavior: smooth; }
-    
+   
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       line-height: 1.6;
       color: #333;
     }
-    
+   
     /* ─── Navigation ─────────────────────────────────────────────────────────── */
-    
+   
     nav {
       background: #fff;
       border-bottom: 1px solid #e0e0e0;
@@ -26,7 +26,7 @@
       top: 0;
       z-index: 100;
     }
-    
+   
     .nav-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -35,7 +35,7 @@
       justify-content: space-between;
       align-items: center;
     }
-    
+   
     .logo {
       font-size: 20px;
       font-weight: 700;
@@ -44,36 +44,31 @@
       align-items: center;
       gap: 8px;
     }
-    
+   
     .logo-icon {
       width: 28px;
       height: 28px;
-      background: linear-gradient(135deg, #6c8ef5, #a78bfa);
       border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 14px;
+      object-fit: contain;
     }
-    
+   
     .nav-links {
       display: flex;
       gap: 30px;
       list-style: none;
     }
-    
+   
     .nav-links a {
       text-decoration: none;
       color: #333;
       font-weight: 500;
       transition: color .3s;
     }
-    
+   
     .nav-links a:hover {
       color: #6c8ef5;
     }
-    
+   
     .nav-cta {
       background: #6c8ef5;
       color: #fff;
@@ -83,44 +78,44 @@
       font-weight: 600;
       transition: background .3s;
     }
-    
+   
     .nav-cta:hover {
       background: #5a7bd0;
     }
-    
+   
     /* ─── Hero ────────────────────────────────────────────────────────────────── */
-    
+   
     .hero {
       background: linear-gradient(135deg, #f5f7fa 0%, #e8eef7 100%);
       padding: 100px 20px;
       text-align: center;
     }
-    
+   
     .hero-container {
       max-width: 800px;
       margin: 0 auto;
     }
-    
+   
     h1 {
       font-size: 52px;
       color: #1a1a1a;
       margin-bottom: 20px;
       line-height: 1.2;
     }
-    
+   
     .hero p {
       font-size: 20px;
       color: #555;
       margin-bottom: 40px;
     }
-    
+   
     .cta-buttons {
       display: flex;
       gap: 16px;
       justify-content: center;
       flex-wrap: wrap;
     }
-    
+   
     .btn {
       padding: 14px 32px;
       border-radius: 8px;
@@ -132,50 +127,50 @@
       cursor: pointer;
       display: inline-block;
     }
-    
+   
     .btn-primary {
       background: #6c8ef5;
       color: #fff;
     }
-    
+   
     .btn-primary:hover {
       background: #5a7bd0;
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(108, 142, 245, 0.3);
     }
-    
+   
     .btn-secondary {
       background: #fff;
       color: #6c8ef5;
       border: 2px solid #6c8ef5;
     }
-    
+   
     .btn-secondary:hover {
       background: #f5f7fa;
     }
-    
+   
     /* ─── Features ────────────────────────────────────────────────────────────── */
-    
+   
     .features {
       max-width: 1200px;
       margin: 80px auto;
       padding: 0 20px;
     }
-    
+   
     .section-title {
       font-size: 36px;
       text-align: center;
       margin-bottom: 50px;
       color: #1a1a1a;
     }
-    
+   
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
       margin-bottom: 60px;
     }
-    
+   
     .feature-card {
       background: #fff;
       padding: 30px;
@@ -183,113 +178,113 @@
       border: 1px solid #e0e0e0;
       transition: all .3s;
     }
-    
+   
     .feature-card:hover {
       border-color: #6c8ef5;
       box-shadow: 0 8px 24px rgba(108, 142, 245, 0.12);
       transform: translateY(-4px);
     }
-    
+   
     .feature-icon {
       font-size: 40px;
       margin-bottom: 16px;
     }
-    
+   
     .feature-card h3 {
       font-size: 20px;
       margin-bottom: 12px;
       color: #1a1a1a;
     }
-    
+   
     .feature-card p {
       color: #666;
       font-size: 14px;
     }
-    
+   
     /* ─── Comparison ──────────────────────────────────────────────────────────── */
-    
+   
     .comparison {
       background: #f9fafb;
       padding: 60px 20px;
       margin: 60px 0;
     }
-    
+   
     .comparison-container {
       max-width: 1000px;
       margin: 0 auto;
     }
-    
+   
     .comparison-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 40px;
       margin-top: 40px;
     }
-    
+   
     .comparison-box {
       background: #fff;
       padding: 30px;
       border-radius: 12px;
       border-left: 4px solid #6c8ef5;
     }
-    
+   
     .comparison-box h3 {
       font-size: 24px;
       margin-bottom: 20px;
       color: #1a1a1a;
     }
-    
+   
     .comparison-list {
       list-style: none;
     }
-    
+   
     .comparison-list li {
       padding: 10px 0;
       border-bottom: 1px solid #e0e0e0;
       color: #555;
       font-size: 14px;
     }
-    
+   
     .comparison-list li:before {
       content: "✓ ";
       color: #6c8ef5;
       font-weight: bold;
       margin-right: 8px;
     }
-    
+   
     /* ─── Stats ───────────────────────────────────────────────────────────────── */
-    
+   
     .stats {
       background: linear-gradient(135deg, #6c8ef5 0%, #8a6dd6 100%);
       color: #fff;
       padding: 60px 20px;
       text-align: center;
     }
-    
+   
     .stats-container {
       max-width: 1000px;
       margin: 0 auto;
     }
-    
+   
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 40px;
       margin-top: 40px;
     }
-    
+   
     .stat-item h4 {
       font-size: 36px;
       margin-bottom: 8px;
     }
-    
+   
     .stat-item p {
       font-size: 16px;
       opacity: 0.95;
     }
-    
+   
     /* ─── CTA Section ─────────────────────────────────────────────────────────── */
-    
+   
     .cta-section {
       max-width: 800px;
       margin: 80px auto;
@@ -298,42 +293,42 @@
       border-radius: 16px;
       text-align: center;
     }
-    
+   
     .cta-section h2 {
       font-size: 32px;
       margin-bottom: 16px;
       color: #1a1a1a;
     }
-    
+   
     .cta-section p {
       font-size: 16px;
       color: #666;
       margin-bottom: 24px;
     }
-    
+   
     /* ─── Footer ──────────────────────────────────────────────────────────────── */
-    
+   
     footer {
       background: #1a1a1a;
       color: #e0e0e0;
       padding: 40px 20px;
       text-align: center;
     }
-    
+   
     .footer-links {
       margin-bottom: 20px;
     }
-    
+   
     .footer-links a {
       color: #6c8ef5;
       text-decoration: none;
       margin: 0 16px;
     }
-    
+   
     .footer-links a:hover {
       text-decoration: underline;
     }
-    
+   
     @media (max-width: 768px) {
       h1 { font-size: 36px; }
       .nav-links { gap: 16px; }
@@ -345,11 +340,12 @@
 </head>
 <body>
 
+
 <!-- Navigation -->
 <nav>
   <div class="nav-container">
     <div class="logo">
-      <div class="logo-icon">✦</div>
+      <img class="logo-icon" src="icon.ico" alt="Exelidoc">
       Exelidoc
     </div>
     <ul class="nav-links">
@@ -360,6 +356,7 @@
     </ul>
   </div>
 </nav>
+
 
 <!-- Hero Section -->
 <section class="hero">
@@ -373,41 +370,42 @@
   </div>
 </section>
 
+
 <!-- Features Section -->
 <section class="features" id="features">
   <h2 class="section-title">What You Get</h2>
-  
+ 
   <div class="features-grid">
     <div class="feature-card">
       <div class="feature-icon">⚡</div>
       <h3>One-Click Installation</h3>
       <p>Download the app, run it, and you're done. No complicated setup, no command line, no Python required.</p>
     </div>
-    
+   
     <div class="feature-card">
       <div class="feature-icon">🧠</div>
       <h3>Two AI Modes</h3>
       <p>Use cloud AI (OpenAI, Claude, Gemini) for maximum power, or local AI (Ollama) for complete privacy.</p>
     </div>
-    
+   
     <div class="feature-card">
       <div class="feature-icon">📊</div>
       <h3>Token-Based Pricing</h3>
       <p>Pay for what you use. Free tier included. Upgrade to Pro or Enterprise when you need more tokens.</p>
     </div>
-    
+   
     <div class="feature-card">
       <div class="feature-icon">⚙️</div>
       <h3>One-Click Tools</h3>
       <p>Summarize, fix grammar, make formal/casual, expand, simplify, or translate with a single click.</p>
     </div>
-    
+   
     <div class="feature-card">
       <div class="feature-icon">🔒</div>
       <h3>Your Data, Your Control</h3>
       <p>All data stays on your machine. No cloud uploads. No privacy concerns. Complete local ownership.</p>
     </div>
-    
+   
     <div class="feature-card">
       <div class="feature-icon">🌍</div>
       <h3>Works Everywhere</h3>
@@ -416,11 +414,12 @@
   </div>
 </section>
 
+
 <!-- Comparison -->
 <section class="comparison">
   <div class="comparison-container">
     <h2 class="section-title">Local AI vs Cloud AI</h2>
-    
+   
     <div class="comparison-grid">
       <div class="comparison-box">
         <h3>🖥️ Local AI (Ollama)</h3>
@@ -433,7 +432,7 @@
           <li>Good for sensitive documents</li>
         </ul>
       </div>
-      
+     
       <div class="comparison-box">
         <h3>☁️ Cloud AI (OpenAI, Claude, Gemini)</h3>
         <ul class="comparison-list">
@@ -449,27 +448,28 @@
   </div>
 </section>
 
+
 <!-- Stats -->
 <section class="stats">
   <div class="stats-container">
     <h2 style="font-size: 32px; margin-bottom: 40px;">Why Choose Exelidoc?</h2>
-    
+   
     <div class="stats-grid">
       <div class="stat-item">
         <h4>0$</h4>
         <p>Free tier included. No credit card needed.</p>
       </div>
-      
+     
       <div class="stat-item">
         <h4>3</h4>
         <p>Cloud AI providers supported (OpenAI, Claude, Gemini)</p>
       </div>
-      
+     
       <div class="stat-item">
         <h4>8</h4>
         <p>One-click AI tools built-in</p>
       </div>
-      
+     
       <div class="stat-item">
         <h4>100%</h4>
         <p>Local data ownership</p>
@@ -478,12 +478,14 @@
   </div>
 </section>
 
+
 <!-- CTA Section -->
 <section class="cta-section">
   <h2>Ready to Supercharge Your Documents?</h2>
   <p>Join thousands of users who are already using Exelidoc to write better, faster, smarter.</p>
   <a href="download.html" class="btn btn-primary">Download Now</a>
 </section>
+
 
 <!-- Footer -->
 <footer>
@@ -492,10 +494,11 @@
     <a href="features.html">Why Exelidoc</a>
     <a href="getting-started.html">Getting Started</a>
     <a href="download.html">Download</a>
-    <li><a href="privacy.html" class="nav-cta">Privacy Policy</a></li>
+    <a href="privacy.html">Privacy Policy</a>
   </div>
   <p>&copy; 2024 Exelidoc. All rights reserved.</p>
 </footer>
+
 
 </body>
 </html>

@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exelidoc Assistant</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface2: #22263a;
+      --border: #2e3350;
+      --accent: #6c8ef5;
+      --accent-dim: #3a4a8a;
+      --text: #e8eaf6;
+      --text-muted: #7b82a8;
+      --success: #4caf88;
+      --warn: #e8a44a;
+      --danger: #e8564a;
+      --radius: 10px;
+      --font: 'Segoe UI', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.5;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--accent), #a78bfa);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+    }
+
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      flex-shrink: 0;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 8px 4px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 12px;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      font-family: var(--font);
+      transition: color .15s;
+    }
+
+    .tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .panels {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .panel {
+      position: absolute;
+      inset: 0;
+      overflow-y: auto;
+      padding: 14px;
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .panel.active {
+      display: flex;
+    }
+
+    .token-bar {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .token-bar strong {
+      color: var(--text);
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 5px;
+      background: var(--border);
+      border-radius: 99px;
+      margin-top: 4px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      transition: width .3s;
+    }
+
+    .progress-fill.warn {
+      background: var(--warn);
+    }
+
+    .progress-fill.danger {
+      background: var(--danger);
+    }
+
+    textarea, input, select {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 12px;
+      padding: 10px;
+      width: 100%;
+      outline: none;
+      transition: border-color .15s;
+    }
+
+    textarea:focus, input:focus, select:focus {
+      border-color: var(--accent);
+    }
+
+    textarea::placeholder, input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 6px;
+    }
+
+    .btn {
+      padding: 9px 14px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      font-family: var(--font);
+      font-weight: 600;
+      transition: all .15s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      flex: 1;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.12);
+    }
+
+    .btn-primary:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .btn-secondary {
+      background: var(--surface2);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+    }
+
+    .response-box {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 12px;
+      line-height: 1.65;
+      min-height: 60px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      color: var(--text);
+      display: none;
+    }
+
+    .response-box.visible {
+      display: block;
+    }
+
+    .banner {
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      display: none;
+    }
+
+    .banner.visible {
+      display: block;
+    }
+
+    .banner.error {
+      background: rgba(232, 86, 74, .12);
+      border: 1px solid rgba(232, 86, 74, .35);
+      color: #f8a09a;
+    }
+
+    .banner.info {
+      background: rgba(108, 142, 245, .1);
+      border: 1px solid var(--accent-dim);
+      color: var(--accent);
+    }
+
+    .loading-row {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    .loading-row.visible {
+      display: flex;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin .6s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .quick-btn {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      padding: 8px 10px;
+      cursor: pointer;
+      font-size: 11px;
+      font-family: var(--font);
+      text-align: left;
+      transition: border-color .15s;
+      line-height: 1.3;
+    }
+
+    .quick-btn:hover {
+      border-color: var(--accent);
+      background: rgba(108, 142, 245, .1);
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 99px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 4px 0;
+    }
+
+    .user-info {
+      font-size: 11px;
+      color: var(--text-muted);
+      padding: 8px;
+      background: var(--surface2);
+      border-radius: 6px;
+    }
+
+    .user-info strong {
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <div class="logo-icon">✦</div>
+    Exelidoc
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="switchTab('chat', this)">💬 Chat</button>
+  <button class="tab" onclick="switchTab('tools', this)">⚡ Tools</button>
+  <button class="tab" onclick="switchTab('account', this)">👤 Account</button>
+</div>
+
+<div class="panels">
+
+  <!-- CHAT PANEL -->
+  <div id="panel-chat" class="panel active">
+
+    <!-- Token usage bar -->
+    <div class="token-bar" id="tokenBar" style="display:none">
+      <strong id="tokenText"></strong>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <textarea id="promptInput" rows="4" placeholder="Ask anything about your document…"></textarea>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" id="sendBtn" onclick="sendPrompt()">Send</button>
+      <button class="btn btn-secondary" onclick="readSelection()">📋 Use Selection</button>
+    </div>
+
+    <div class="loading-row" id="loadingRow">
+      <div class="spinner"></div> Thinking…
+    </div>
+
+    <div class="banner error" id="errorBanner"></div>
+
+    <div id="responseWrap" style="display:none; flex-direction:column; gap:6px;">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <span style="font-size:10px; font-weight:700; text-transform:uppercase; color:var(--text-muted);">Response</span>
+        <div style="display:flex; gap:4px;">
+          <button class="btn btn-secondary" style="flex:0; padding:4px 8px; font-size:10px;" onclick="copyResponse()">Copy</button>
+          <button class="btn btn-secondary" style="flex:0; padding:4px 8px; font-size:10px;" onclick="insertToDoc()">Insert</button>
+          <button class="btn btn-secondary" style="flex:0; padding:4px 8px; font-size:10px;" onclick="clearResponse()">Clear</button>
+        </div>
+      </div>
+      <div class="response-box visible" id="responseBox"></div>
+    </div>
+
+  </div>
+
+  <!-- TOOLS PANEL -->
+  <div id="panel-tools" class="panel">
+    <p style="color:var(--text-muted); font-size:12px;">
+      One-click AI actions on your selected text.
+    </p>
+
+    <div class="quick-grid">
+      <button class="quick-btn" onclick="quickAction('Summarize the selected text concisely.')">
+        📝 Summarize
+      </button>
+      <button class="quick-btn" onclick="quickAction('Fix grammar and spelling. Return only the corrected text.')">
+        ✅ Fix Grammar
+      </button>
+      <button class="quick-btn" onclick="quickAction('Make the text more professional. Return only the result.')">
+        💼 Make Formal
+      </button>
+      <button class="quick-btn" onclick="quickAction('Simplify the text. Return only the result.')">
+        🎯 Simplify
+      </button>
+      <button class="quick-btn" onclick="quickAction('Expand with more detail. Return only the result.')">
+        🔍 Expand
+      </button>
+      <button class="quick-btn" onclick="quickAction('List key bullet points.')">
+        📌 Bullet Points
+      </button>
+    </div>
+
+    <div class="loading-row" id="toolsLoadingRow">
+      <div class="spinner"></div> Working…
+    </div>
+
+    <div class="banner error" id="toolsError"></div>
+
+    <div id="toolsResultWrap" style="display:none; flex-direction:column; gap:6px;">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <span style="font-size:10px; font-weight:700; text-transform:uppercase; color:var(--text-muted);">Result</span>
+        <div style="display:flex; gap:4px;">
+          <button class="btn btn-secondary" style="flex:0; padding:4px 8px; font-size:10px;" onclick="copyToolResult()">Copy</button>
+          <button class="btn btn-secondary" style="flex:0; padding:4px 8px; font-size:10px;" onclick="insertToolResult()">Insert</button>
+          <button class="btn btn-secondary" style="flex:0; padding:4px 8px; font-size:10px;" onclick="clearToolResult()">Clear</button>
+        </div>
+      </div>
+      <div class="response-box visible" id="toolsResult"></div>
+    </div>
+  </div>
+
+  <!-- ACCOUNT PANEL -->
+  <div id="panel-account" class="panel">
+
+    <div class="input-group">
+      <div class="section-label">User ID</div>
+      <input type="text" id="userIdInput" placeholder="Enter your user ID or email…" />
+    </div>
+
+    <button class="btn btn-primary" onclick="loginUser()">Sign In / Sign Up</button>
+
+    <div class="banner error" id="accountError"></div>
+    <div class="banner info" id="accountInfo"></div>
+
+    <hr />
+
+    <div id="userDetails" style="display:none; flex-direction:column; gap:10px;">
+
+      <div class="user-info">
+        <strong>User:</strong> <span id="displayUserId"></span><br>
+        <strong>Tier:</strong> <span id="displayTier"></span><br>
+        <strong>Tokens Used (this month):</strong> <span id="displayUsed"></span><br>
+        <strong>Monthly Limit:</strong> <span id="displayLimit"></span><br>
+        <strong>Remaining:</strong> <span id="displayRemaining" style="color:var(--success);"></span>
+      </div>
+
+      <button class="btn btn-secondary" onclick="upgradePlan()">💳 Upgrade Plan</button>
+      <button class="btn btn-secondary" onclick="logout()">🚪 Logout</button>
+
+      <hr />
+
+      <p style="font-size:10px; color:var(--text-muted); line-height:1.5;">
+        <strong>Subscription Tiers:</strong><br>
+        • <strong>Free:</strong> 10,000 tokens/month<br>
+        • <strong>Pro:</strong> 100,000 tokens/month<br>
+        • <strong>Enterprise:</strong> 1,000,000 tokens/month
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+const BACKEND = "http://localhost:8000";
+let currentUserId = localStorage.getItem("office_ai_user_id") || null;
+let currentTier = localStorage.getItem("office_ai_tier") || "free";
+let lastResponse = "";
+let lastToolResult = "";
+
+// ── Initialize ──────────────────────────────────────────────────────────────
+
+Office.onReady(function(info) {
+  if (currentUserId) {
+    loadUserInfo();
+    showUserDetails();
+  }
+});
+
+// ── UI Functions ────────────────────────────────────────────────────────────
+
+function switchTab(name, btn) {
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+  btn.classList.add("active");
+  document.getElementById("panel-" + name).classList.add("active");
+}
+
+// ── Account Management ──────────────────────────────────────────────────────
+
+function loginUser() {
+  const userId = document.getElementById("userIdInput").value.trim();
+  if (!userId) {
+    showError("account", "Enter your user ID or email.");
+    return;
+  }
+
+  // Sign up user
+  callAPI("/signup", { user_id: userId, subscription_tier: "free" }, "POST")
+    .then(data => {
+      currentUserId = userId;
+      currentTier = data.tier;
+      localStorage.setItem("office_ai_user_id", userId);
+      localStorage.setItem("office_ai_tier", currentTier);
+      showInfo("account", `Welcome! Signed in as ${userId} (${currentTier} tier)`);
+      showUserDetails();
+      loadUserInfo();
+    })
+    .catch(err => showError("account", err));
+}
+
+function logout() {
+  currentUserId = null;
+  currentTier = "free";
+  localStorage.removeItem("office_ai_user_id");
+  localStorage.removeItem("office_ai_tier");
+  document.getElementById("userDetails").style.display = "none";
+  document.getElementById("userIdInput").value = "";
+  showInfo("account", "Logged out.");
+}
+
+function upgradePlan() {
+  showInfo("account", "Contact support at support@example.com to upgrade your plan.");
+}
+
+function showUserDetails() {
+  document.getElementById("userDetails").style.display = "flex";
+}
+
+function loadUserInfo() {
+  if (!currentUserId) return;
+
+  callAPI(`/usage/${currentUserId}`, null, "GET")
+    .then(data => {
+      document.getElementById("displayUserId").textContent = currentUserId;
+      document.getElementById("displayTier").textContent = data.tier;
+      document.getElementById("displayUsed").textContent = data.used.toLocaleString();
+      document.getElementById("displayLimit").textContent = data.limit.toLocaleString();
+      document.getElementById("displayRemaining").textContent = data.remaining.toLocaleString();
+
+      // Update token bar in chat
+      const percent = Math.min(100, (data.used / data.limit) * 100);
+      document.getElementById("tokenBar").style.display = "block";
+      document.getElementById("tokenText").textContent = `${data.used.toLocaleString()} / ${data.limit.toLocaleString()} tokens`;
+      const fill = document.getElementById("progressFill");
+      fill.style.width = percent + "%";
+      if (percent > 80) fill.classList.add("danger");
+      else if (percent > 60) fill.classList.add("warn");
+      else fill.classList.remove("warn", "danger");
+    })
+    .catch(() => {});
+}
+
+// ── Chat Functions ─────────────────────────────────────────────────────────
+
+async function sendPrompt() {
+  if (!currentUserId) {
+    showError("", "Please sign in first. Go to Account tab.");
+    return;
+  }
+
+  const prompt = document.getElementById("promptInput").value.trim();
+  if (!prompt) return;
+
+  setLoading(true);
+  hideError("");
+  document.getElementById("responseWrap").style.display = "none";
+
+  try {
+    const data = await callAPI("/ai/generate", { prompt, mode: "cloud", provider: "anthropic" }, "POST", currentUserId);
+    lastResponse = data.result;
+    document.getElementById("responseBox").textContent = lastResponse;
+    document.getElementById("responseWrap").style.display = "flex";
+    loadUserInfo(); // Update token display
+  } catch (e) {
+    showError("errorBanner", e);
+  } finally {
+    setLoading(false);
+  }
+}
+
+async function quickAction(instruction) {
+  if (!currentUserId) {
+    showError("", "Please sign in first. Go to Account tab.");
+    return;
+  }
+
+  document.getElementById("toolsLoadingRow").classList.add("visible");
+  hideError("toolsError");
+  document.getElementById("toolsResultWrap").style.display = "none";
+
+  let selection = "";
+  try {
+    if (Office.context.host === Office.HostType.Word) {
+      await Word.run(async ctx => {
+        const sel = ctx.document.getSelection();
+        sel.load("text");
+        await ctx.sync();
+        selection = sel.text.trim();
+      });
+    }
+  } catch {}
+
+  const prompt = selection ? `${instruction}\n\nText:\n${selection}` : instruction;
+
+  try {
+    const data = await callAPI("/ai/generate", { prompt, mode: "cloud", provider: "anthropic" }, "POST", currentUserId);
+    lastToolResult = data.result;
+    document.getElementById("toolsResult").textContent = lastToolResult;
+    document.getElementById("toolsResultWrap").style.display = "flex";
+    loadUserInfo();
+  } catch (e) {
+    showError("toolsError", e);
+  } finally {
+    document.getElementById("toolsLoadingRow").classList.remove("visible");
+  }
+}
+
+async function readSelection() {
+  try {
+    if (Office.context.host === Office.HostType.Word) {
+      await Word.run(async ctx => {
+        const sel = ctx.document.getSelection();
+        sel.load("text");
+        await ctx.sync();
+        if (sel.text.trim()) {
+          document.getElementById("promptInput").value = sel.text;
+        }
+      });
+    }
+  } catch (e) {
+    showError("errorBanner", "Could not read selection");
+  }
+}
+
+async function insertToDoc() {
+  if (!lastResponse) return;
+  try {
+    if (Office.context.host === Office.HostType.Word) {
+      await Word.run(async ctx => {
+        const sel = ctx.document.getSelection();
+        sel.insertText(lastResponse, "Replace");
+        await ctx.sync();
+      });
+    }
+  } catch (e) {
+    showError("errorBanner", "Could not insert text");
+  }
+}
+
+async function insertToolResult() {
+  if (!lastToolResult) return;
+  try {
+    if (Office.context.host === Office.HostType.Word) {
+      await Word.run(async ctx => {
+        const sel = ctx.document.getSelection();
+        sel.insertText(lastToolResult, "Replace");
+        await ctx.sync();
+      });
+    }
+  } catch (e) {
+    showError("errorBanner", "Could not insert text");
+  }
+}
+
+function copyResponse() {
+  navigator.clipboard.writeText(lastResponse).catch(() => {});
+}
+
+function copyToolResult() {
+  navigator.clipboard.writeText(lastToolResult).catch(() => {});
+}
+
+function clearResponse() {
+  document.getElementById("responseWrap").style.display = "none";
+  lastResponse = "";
+}
+
+function clearToolResult() {
+  document.getElementById("toolsResultWrap").style.display = "none";
+  lastToolResult = "";
+}
+
+// ── API Calls ──────────────────────────────────────────────────────────────
+
+async function callAPI(path, body, method = "GET", userId = null) {
+  const opts = {
+    method,
+    headers: { "Content-Type": "application/json" },
+  };
+  if (userId) {
+    opts.headers["X-User-ID"] = userId;
+  }
+  if (body) {
+    opts.body = JSON.stringify(body);
+  }
+
+  const res = await fetch(BACKEND + path, opts);
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.detail || "Request failed");
+  }
+
+  return data;
+}
+
+function setLoading(on) {
+  document.getElementById("loadingRow").classList.toggle("visible", on);
+  document.getElementById("sendBtn").disabled = on;
+}
+
+function showError(el, msg) {
+  const banner = document.getElementById(el || "errorBanner");
+  banner.textContent = "⚠ " + msg;
+  banner.classList.add("visible");
+}
+
+function hideError(el) {
+  document.getElementById(el || "errorBanner").classList.remove("visible");
+}
+
+function showInfo(el, msg) {
+  const banner = document.getElementById(el + "Info");
+  banner.textContent = "ℹ " + msg;
+  banner.classList.add("visible");
+  setTimeout(() => banner.classList.remove("visible"), 3000);
+}
+</script>
+
+</body>
+</html>
